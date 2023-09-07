@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,22 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
+  background-size: 0 2px;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  transition: background-size .25s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff)
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+  background-position: 50% 100%
 }
