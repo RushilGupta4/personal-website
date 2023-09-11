@@ -48,10 +48,10 @@ function NavBar() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={`${inter.className} bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden`}>
+    <html lang='en' className={`h-full`}>
+      <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden`}>
         <NavBar />
-        <div className={`z-10 relative px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+        <div className={`h-2/3 z-10 relative px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
       </body>
     </html>
   );
