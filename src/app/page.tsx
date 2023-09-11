@@ -5,11 +5,11 @@ import { ImBlogger2 } from "react-icons/im";
 
 export default function Home() {
   return (
-    <div className={"flex flex-col justify-between h-[60vh] lg:h-[65vh] pt-5 lg:pt-12 lg:px-0"}>
+    <div className={"flex flex-col justify-between h-[60vh] lg:h-[65vh] pt-4 lg:pt-12"}>
       <div className={`flex-none lg:flex`}>
         {/* Profile Pic */}
         <div className={`mx-auto w-full lg:w-[35%]`}>
-          <div className={`mx-auto w-[65%] min-[540px]:w-[60%] sm:w-[55%] md:w-[40%] min-[920px]:w-[35%] lg:w-[85%]`}>
+          <div className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] md:w-[40%] min-[920px]:w-[35%] lg:w-[85%]`}>
             <Image
               src='/profile_pic.jpeg'
               sizes='100vw'
@@ -21,21 +21,28 @@ export default function Home() {
               }}
               quality={100}
               alt='Picture of me'
-              className={`mx-auto border-8 border-slate-300 rounded-full`}
+              className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
             />
           </div>
         </div>
 
         {/* About Me */}
-        <div className={`mx-auto w-full lg:w-[70%] pt-3 lg:pt-0 lg:pl-2`}>
+        <div className={`mx-auto w-full lg:w-[70%] pt-1 lg:pt-0 lg:my-auto lg:pb-8 lg:pl-8`}>
           <p
             className={`base-heading underline decoration-[2px] sm:decoration-[3px] underline-offset-[8px] sm:underline-offset-[12px] text-4xl sm:text-6xl`}
           >
             Hi, I'm Rushil
           </p>
-          <p className={`pt-3 lg:pt-8 font-extralight lg:font-[125] text-[18px] lg:text-[22px] text-center lg:text-left px-0 lg:px-4`}>
-            Hi, I'm Rushil Gupta, a 1st year Computer Science student. I'm currently researching on algorithmic trading.
-          </p>
+          <div
+            className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-[17px] md:text-[20px] lg:text-[22px] text-center lg:text-left px-0 lg:px-4`}
+          >
+            <p>I'm a 1st year Computer Science student, currently researching on algorithmic trading.</p>
+            <p className={`pt-3 md:pt-6`}>Current coding in:</p>
+            <ul className='pl-0 lg:pl-8 text-[15px] md:text-[18px] lg:text-[20px] font-extralight lg:font-[150] flex flex-col items-center lg:items-start'>
+              <li>&#8226; Python</li>
+              <li>&#8226; JavaScript</li>
+            </ul>
+          </div>
         </div>
       </div>
 

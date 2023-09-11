@@ -22,7 +22,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 
 function NavBar() {
   return (
-    <div className={`bg-[#0a1228] backdrop-blur-md pb-6 sm:pb-8 px-4 sm:px-16 md:px-20 lg:px-32`}>
+    <div className={`bg-[#0a1228] backdrop-blur-md pb-4 sm:pb-8 px-4 sm:px-16 md:px-20 lg:px-32`}>
       <div className={`emojiWrapper fixed text-4xl blur-[1px] md:blur-[1.25px]`}>
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
@@ -37,7 +37,7 @@ function NavBar() {
           <NavItem href='/'>Home</NavItem>
           <NavItem href='/blogs'>Blogs</NavItem>
         </ul>
-        <p className={`pt-12 sm:pt-12 text-[38px] leading-none sm:text-[56px] md:text-[64px] lg:text[72px] text-white font-semibold`}>
+        <p className={`pt-10 sm:pt-12 text-[38px] leading-none sm:text-[56px] md:text-[64px] lg:text[72px] text-white font-semibold`}>
           Student Developer
         </p>
         <p className={`text-[18px] sm:text-[20px] text-white font-light sm:font-extralight`}>Ashoka University</p>
