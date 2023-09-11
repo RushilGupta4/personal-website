@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
+  background-size: 0 2px;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+  background-position: 50% 100%;
+}
+
+.github:hover .social-svg-mask {
+  fill: rgb(1, 4, 13) !important;
+}
+
+.linkedin:hover .social-svg-mask {
+  fill: #0a66c2 !important;
+}
+
+.email:hover .social-svg-mask {
+  fill: #d53833 !important;
+}
+
+.base-heading {
+  color: #15203e;
+  font-weight: 700;
+  text-align: center;
+}
+
+@for $i from 1 through 10 {
+  .emojiWrapper p:nth-child(#{$i}) {
+    animation: animate#{$i} ((random(1500) / 100 + 8) + s) linear infinite;
+    animation-delay: ((random(1500) / 100) - 5) + s !important;
+    z-index: -1;
+    position: absolute;
+    bottom: -50vh;
+
+    $max: 30;
+    $lower: 10;
+    $upper: 20;
+    $baseY: random(10);
+    $finalY: random($max - $upper);
+
+    @media (max-width: 768px) {
+      @if $i > 5 {
+        animation: none;
+      }
+    }
+
+    @media (min-width: 768px) {
+      $max: 26;
+      $lower: 10;
+      $upper: 20;
+      animation-duration: ((random(1500) / 100) + 12) + s;
+      font-size: (4 * (random(8) + 10)) + px;
+    }
+
+    @if $baseY > 5 {
+      $baseY: random($max - $upper);
+    } @else {
+      $baseY: random($max - $upper) + $upper;
+    }
+
+    @if $baseY <= $lower {
+      $finalY: $finalY + $upper;
+    }
+
+    @keyframes animate#{$i} {
+      0% {
+        transform: translateX(115vw) translateY($baseY + vh) rotate((random(720) - 360) + deg);
+        bottom: 0;
+      }
+      100% {
+        transform: translateX(-15vw) translateY($finalY + vh) rotate((random(720) - 360) + deg);
+        bottom: 0;
+      }
+    }
+  }
+}
