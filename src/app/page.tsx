@@ -31,14 +31,16 @@ export default function Home() {
           <p
             className={`base-heading underline decoration-[2px] sm:decoration-[3px] underline-offset-[8px] sm:underline-offset-[12px] text-4xl sm:text-6xl`}
           >
-            Hi, I'm Rushil
+            Hi, I&apos;m Rushil
           </p>
           <div
             className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-[17px] md:text-[20px] lg:text-[22px] text-center lg:text-left px-0 lg:px-4`}
           >
-            <p>I'm a 1st year Computer Science student, currently researching on algorithmic trading.</p>
+            <p>I&apos;m a 1st year Computer Science student, currently researching on algorithmic trading.</p>
             <p className={`pt-3 md:pt-6`}>Current coding in:</p>
-            <ul className='list-disc pl-0 lg:pl-4 text-[15px] md:text-[18px] lg:text-[20px] font-extralight lg:font-[150] flex flex-col items-center lg:items-start'>
+            <ul
+              className={`list-disc pl-0 lg:pl-4 text-[15px] md:text-[18px] lg:text-[20px] font-extralight lg:font-[150] flex flex-col items-center lg:items-start`}
+            >
               <li>Python</li>
               <li>JavaScript</li>
             </ul>
