@@ -38,9 +38,9 @@ export default function Home() {
           >
             <p>I'm a 1st year Computer Science student, currently researching on algorithmic trading.</p>
             <p className={`pt-3 md:pt-6`}>Current coding in:</p>
-            <ul className='pl-0 lg:pl-8 text-[15px] md:text-[18px] lg:text-[20px] font-extralight lg:font-[150] flex flex-col items-center lg:items-start'>
-              <li>&#8226; Python</li>
-              <li>&#8226; JavaScript</li>
+            <ul className='list-disc pl-0 lg:pl-4 text-[15px] md:text-[18px] lg:text-[20px] font-extralight lg:font-[150] flex flex-col items-center lg:items-start'>
+              <li>Python</li>
+              <li>JavaScript</li>
             </ul>
           </div>
         </div>
