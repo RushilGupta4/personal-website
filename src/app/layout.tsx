@@ -2,7 +2,7 @@ import "./globals.scss";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import Typing from "../components/typing";
+import Typing from "../components/NavbarTitle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 function NavBar() {
   return (
     <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-8 px-3 sm:px-16 md:px-20 lg:px-32`}>
-      <div className={`emojiWrapper fixed text-4xl blur-[1.2px]`}>
+      <div className={`emojiWrapper fixed text-4xl blur-[1.25px] sm:blur-[1.5px] md:blur-[1.75px] brightness-50`}>
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
         <p>&#128170;</p> {/* Flexed Bicep */}
