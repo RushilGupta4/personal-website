@@ -5,7 +5,7 @@ import { ImBlogger2 } from "react-icons/im";
 
 export default function Home() {
   return (
-    <div className={"flex flex-col justify-between h-[90%] pt-4 lg:pt-8"}>
+    <div className={"flex flex-col justify-between h-[85%] pt-4 lg:pt-12"}>
       <div className={`flex-none lg:flex`}>
         {/* Profile Pic */}
         <div className={`mx-auto w-full lg:w-[35%]`}>
