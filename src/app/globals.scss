@@ -50,22 +50,31 @@ body {
   text-align: center;
 }
 
-@for $i from 1 through 10 {
+.text-shadow {
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.3);
+}
+
+.typing-cursor {
+  font-size: 0px;
+  text-shadow: none;
+}
+
+@for $i from 1 through 15 {
   .emojiWrapper p:nth-child(#{$i}) {
-    animation: animate#{$i} ((random(1500) / 100 + 8) + s) linear infinite;
+    animation: animate#{$i} ((random(1500) / 100 + 10) + s) linear infinite;
     animation-delay: ((random(1500) / 100) - 5) + s !important;
     z-index: -1;
     position: absolute;
     bottom: -50vh;
 
     $max: 30;
-    $lower: 10;
-    $upper: 20;
+    $lower: 13;
+    $upper: 19;
     $baseY: random(10);
     $finalY: random($max - $upper);
 
     @media (max-width: 768px) {
-      @if $i > 5 {
+      @if $i > 4 {
         animation: none;
       }
     }
@@ -74,7 +83,8 @@ body {
       $max: 26;
       $lower: 10;
       $upper: 20;
-      animation-duration: ((random(1500) / 100) + 12) + s;
+      animation-duration: ((random(1500) / 100) + 18) + s;
+      animation-delay: ((random(2000) / 100) - 5) + s !important;
       font-size: (4 * (random(8) + 10)) + px;
     }
 
