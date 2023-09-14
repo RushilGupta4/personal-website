@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import Typing from "../components/NavbarTitle";
+import { SocialIcon } from "react-social-icons";
+import { SiBlogger } from "react-icons/si";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,12 +51,33 @@ function NavBar() {
   );
 }
 
+const SocialIcons = () => {
+  return (
+    <div className={"z-10 pb-[2vh] sm:pb-[3vh] md:pb-[4vh] lg:pb-[5vh]"}>
+      <div className={"flex gap-x-4 items-center justify-center"}>
+        <SocialIcon target='_blank' url={"https://github.com/rushilgupta4"} />
+        <SocialIcon target='_blank' url={"https://linkedin.com/in/rushilgupta4"} bgColor={"#0a66c2"} />
+        <SocialIcon network={"email"} url={"mailto:rushilgupta4@gmail.com"} bgColor={"#d53833"} />
+        <Link href={"/blogs"}>
+          <SiBlogger href={"/blogs"} className={"rounded-full border-[8px] border-black"} size={50} />
+        </Link>
+      </div>
+      <p className={`tracking-widest text-center text-gray-400 pt-1 sm:pt-2 lg:pt-3 font-medium text-[12px] sm:text-sm md:text-[14px]`}>
+        &#169; 2023 RUSHIL GUPTA
+      </p>
+    </div>
+  );
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={`h-full`}>
-      <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden`}>
-        <NavBar />
-        <div className={`h-2/3 z-10 relative px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+      <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
+        <div>
+          <NavBar />
+          <div className={`z-10 relative px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+        </div>
+        <SocialIcons />
       </body>
     </html>
   );
