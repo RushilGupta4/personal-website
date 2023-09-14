@@ -3,9 +3,9 @@
 import Typewriter from "typewriter-effect";
 
 const pauseString = 10000;
-const deleteSpeed = 20;
-const delay = 40;
-const typeSpeedFactor = 2;
+const delSpeed = 20;
+const delay = 50;
+const typeSpeedFactor = 0.75;
 
 let firstWaitText = true;
 let waitTexts: string[] = ["I'm a ", "Sometimes a ", "Or even a ", "Maybe be a "];
@@ -30,15 +30,15 @@ const Typing = ({ texts, className }: { texts: Array<string>; className?: string
           texts.map((text) => {
             typewriter
               .changeDelay(delay)
-              .changeDeleteSpeed(deleteSpeed)
+              .changeDeleteSpeed(delSpeed)
               .typeString(text)
               .pauseFor(pauseString)
               .deleteAll()
-              .pauseFor(500)
+              .pauseFor(300)
               .changeDelay(delay * typeSpeedFactor)
               .changeDeleteSpeed(0.001)
               .typeString(getWaitText())
-              .changeDelay(1000)
+              .changeDelay(500)
               .typeString("..")
               .changeDelay(1)
               .typeString(".")

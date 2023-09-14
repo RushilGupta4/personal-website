@@ -73,14 +73,17 @@ const BlogPreview = ({
 
 const BlogsPage = () => {
   return (
-    <div id='blogs' className={"pt-4 mb-20 lg:pt-12 lg:px-0"}>
-      <p className={`base-heading text-[40px] sm:text-[54px]`}>Blogs</p>
-      <div className={`flex flex-col pt-2 lg:pt-4 gap-4 justify-center items-stretch`}>
-        {blogs.map((blogData) => (
-          <BlogPreview key={blogData.link} data={blogData} />
-        ))}
-      </div>
+    <div className={"flex flex-col justify-center bg-white h-[60vh] w-full"}>
+      <p className='base-heading text-5xl md:text-6xl lg:text-7xl'>WORK IN PROGRESS</p>
     </div>
+    // <div id='blogs' className={"pt-4 mb-20 lg:pt-12 lg:px-0"}>
+    //   <p className={`base-heading text-[40px] sm:text-[54px]`}>Blogs</p>
+    //   <div className={`flex flex-col pt-2 lg:pt-4 gap-4 justify-center items-stretch`}>
+    //     {blogs.map((blogData) => (
+    //       <BlogPreview key={blogData.link} data={blogData} />
+    //     ))}
+    //   </div>
+    // </div>
   );
 };
 
