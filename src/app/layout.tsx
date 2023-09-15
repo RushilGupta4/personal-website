@@ -33,6 +33,7 @@ function NavBar() {
         <p>&#129299;</p> {/* Nerd Face */}
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
+        <p>&#128170;</p> {/* Flexed Bicep */}
       </div>
       <div className={"z-10 relative"}>
         <ul className={`flex items-center pt-6 pb-10 sm:pb-12 justify-center sm:justify-start gap-x-4 sm:gap-x-12`}>
@@ -40,10 +41,7 @@ function NavBar() {
           <NavItem href='/blogs'>Blogs</NavItem>
         </ul>
         <div className='min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px]'>
-          <Typing
-            className={`font-bold text-shadow leading-none empty:inline-block text-[39px] sm:text-[56px] md:text-[64px] lg:text-[72px]`}
-            texts={["Student Developer", "Caffeine Addict", "Chess Enthusiast"]}
-          />
+          <Typing className={`font-bold text-shadow leading-none empty:inline-block text-[39px] sm:text-[56px] md:text-[64px] lg:text-[72px]`} />
         </div>
         {/* <p className={`text-shadow text-[18px] sm:text-[20px] font-light sm:font-[250]`}>Ashoka University</p> */}
       </div>
@@ -52,9 +50,10 @@ function NavBar() {
 }
 
 const SocialIcons = () => {
+  const copyrightClass = "w-fit pt-[2px] sm:pt-[4px] lg:pt-[6px]";
   return (
-    <div className={"z-10 pb-[2vh] sm:pb-[3vh] md:pb-[4vh] lg:pb-[5vh]"}>
-      <div className={"flex gap-x-4 items-center justify-center"}>
+    <div className={"z-10 pt-8 pb-[2vh] sm:pb-[3vh] md:pb-[4vh] lg:pb-[5vh]"}>
+      <div className={"flex gap-x-4 items-center justify-center pb-1"}>
         <SocialIcon target='_blank' url={"https://github.com/rushilgupta4"} />
         <SocialIcon target='_blank' url={"https://linkedin.com/in/rushilgupta4"} bgColor={"#0a66c2"} />
         <SocialIcon network={"email"} url={"mailto:rushilgupta4@gmail.com"} bgColor={"#d53833"} />
@@ -62,9 +61,11 @@ const SocialIcons = () => {
           <SiBlogger href={"/blogs"} className={"rounded-full border-[8px] border-black"} size={50} />
         </Link>
       </div>
-      <p className={`tracking-widest text-center text-gray-400 pt-1 sm:pt-2 lg:pt-3 font-medium text-[12px] sm:text-sm md:text-[14px]`}>
-        &#169; 2023 RUSHIL GUPTA
-      </p>
+      <div className={`${copyrightClass} text-center text-gray-400 mx-auto`}>
+        <p className={`${copyrightClass} border-t border-gray-400 font-medium tracking-[0.175rem] text-[12px] sm:text-sm md:text-[14px]`}>
+          &#169; 2023 RUSHIL GUPTA
+        </p>
+      </div>
     </div>
   );
 };
@@ -75,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
         <div>
           <NavBar />
-          <div className={`z-10 relative px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+          <div className={`z-10 relative pt-6 lg:pt-12 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
         </div>
         <SocialIcons />
       </body>

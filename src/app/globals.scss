@@ -74,7 +74,7 @@ body {
     $finalY: random($max - $upper);
 
     @media (max-width: 768px) {
-      @if $i > 4 {
+      @if $i > 5 {
         animation: none;
       }
     }
@@ -83,8 +83,8 @@ body {
       $max: 26;
       $lower: 10;
       $upper: 20;
-      animation-duration: ((random(1500) / 100) + 18) + s;
-      animation-delay: ((random(2000) / 100) - 5) + s !important;
+      animation-duration: ((random(1500) / 100) + 25) + s;
+      animation-delay: ((random(2500) / 100) - 5) + s !important;
       font-size: (4 * (random(8) + 10)) + px;
     }
 
