@@ -9,7 +9,7 @@ const typeSpeedFactor = 0.6;
 const descriptions = ["Student Developer", "Caffeine Addict", "Chess Enthusiast"];
 
 let firstWaitText = true;
-let waitTexts: string[] = ["I'm a ", "Sometimes a ", "Or even a ", "Maybe a ", "Often a"];
+let waitTexts: string[] = ["I'm a ", "Sometimes a ", "Or even a ", "Maybe a ", "Often a "];
 waitTexts = [waitTexts, waitTexts, waitTexts, waitTexts].reduce((acc, curVal) => {
   return acc.concat(curVal);
 }, []);
