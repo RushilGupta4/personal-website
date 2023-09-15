@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className={`pt-6 lg:pt-12 flex-none lg:flex`}>
+    <div className={`flex-none lg:flex`}>
       {/* Profile Pic */}
       <div className={`mx-auto w-full lg:w-[35%]`}>
         <div className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-[80%]`}>
