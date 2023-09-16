@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import Typewriter from "typewriter-effect";
+import Typewriter from 'typewriter-effect';
 
 const pauseString = 6500;
 const delSpeed = 20;
 const delay = 50;
 const typeSpeedFactor = 0.6;
-const descriptions = ["Student Developer", "Caffeine Addict", "Chess Enthusiast"];
+const descriptions = ['Student Developer', 'Caffeine Addict', 'Chess Enthusiast'];
 
 let firstWaitText = true;
-let waitTexts: string[] = ["I'm a ", "Sometimes a ", "Or even a ", "Maybe a ", "Often a "];
+let waitTexts: string[] = ["I'm a ", 'Sometimes a ', 'Or even a ', 'Maybe a ', 'Often a '];
 waitTexts = [waitTexts, waitTexts, waitTexts, waitTexts].reduce((acc, curVal) => {
   return acc.concat(curVal);
 }, []);
@@ -25,10 +25,10 @@ const getWaitText = () => {
 
 const Typing = ({ className }: { className?: string }) => {
   return (
-    <div className={className ? className : ""}>
+    <div className={className ? className : ''}>
       <Typewriter
-        onInit={(typewriter) => {
-          descriptions.map((text) => {
+        onInit={typewriter => {
+          descriptions.map(text => {
             typewriter
               .changeDelay(delay)
               .changeDeleteSpeed(delSpeed)
@@ -40,9 +40,9 @@ const Typing = ({ className }: { className?: string }) => {
               .changeDeleteSpeed(0.001)
               .typeString(getWaitText())
               .changeDelay(300)
-              .typeString("..")
+              .typeString('..')
               .changeDelay(1)
-              .typeString(".")
+              .typeString('.')
               .pauseFor(300)
               .deleteAll();
             // .pauseFor(50);
@@ -51,7 +51,7 @@ const Typing = ({ className }: { className?: string }) => {
         }}
         options={{
           loop: true,
-          cursorClassName: "typing-cursor",
+          cursorClassName: 'typing-cursor'
         }}
       />
     </div>

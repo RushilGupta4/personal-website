@@ -32,16 +32,21 @@ body {
   background-size: 0 2px;
   background-position: 50% 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.25s ease-in-out;
+  transition: background-size 0.2s ease-in-out;
 }
 
-.link-underline-black {
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
+.link-underline-blue {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#1c95e7, #1c95e7);
+  background-position: 0% 100%;
+
+  :hover {
+    background-size: 100% 2px;
+    background-position: 50% 100%;
+  }
 }
 
 .link-underline:hover {
   background-size: 100% 2px;
-  background-position: 50% 100%;
 }
 
 .base-heading {

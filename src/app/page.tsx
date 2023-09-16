@@ -1,4 +1,10 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Me | Rushil Gupta",
+  description: "See a personal side of me, not to be found anywhere else!",
+};
 
 export default function Home() {
   return (
@@ -32,7 +38,7 @@ export default function Home() {
         <div
           className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-[17px] md:text-xl lg:text-[21px] text-center lg:text-left px-1 lg:px-8`}
         >
-          <p>I&apos;m a 1st year Computer Science student, currently researching on algorithmic trading.</p>
+          <p>I&apos;m a 1st year Computer Science student, currently researching algorithmic trading.</p>
         </div>
       </div>
     </div>
