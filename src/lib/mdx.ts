@@ -19,6 +19,10 @@ export const getPostBySlug = async (slug: string, directory: string) => {
     options: { parseFrontmatter: true }
   });
 
+  if (!frontmatter.published) {
+    return { meta: {}, content: null };
+  }
+
   return { meta: { ...frontmatter, slug: realSlug }, content };
 };
 
@@ -29,7 +33,10 @@ export const getAllPostsMeta = async (directory: string) => {
   let posts = [];
 
   for (const file of files) {
-    const { meta } = await getPostBySlug(file, directory);
+    const { meta, content } = await getPostBySlug(file, directory);
+    if (!content) {
+      continue;
+    }
     posts.push(meta);
   }
 
