@@ -8,7 +8,7 @@ const ShowBlogs = ({ blogsMetaData }: { blogsMetaData: any }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredBlogs, setFilteredBlogs] = useState(blogsMetaData);
 
-  if (filteredBlogs.length == 0) {
+  if (blogsMetaData.length == 0) {
     return (
       <div className={'flex flex-col justify-center bg-white py-10 w-full'}>
         <p className="base-heading text-4xl md:text-5xl lg:text-6xl">COMING SOON :&#41;</p>
