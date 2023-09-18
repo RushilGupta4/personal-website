@@ -1,9 +1,9 @@
-import Image from "next/image";
-import type { Metadata } from "next";
+import Image from 'next/image';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "About Me | Rushil Gupta",
-  description: "See a personal side of me, not to be found anywhere else!",
+  title: 'About Me | Rushil Gupta',
+  description: 'See a personal side of me, not to be found anywhere else!'
 };
 
 export default function Home() {
@@ -11,18 +11,20 @@ export default function Home() {
     <div className={`flex-none lg:flex`}>
       {/* Profile Pic */}
       <div className={`mx-auto w-full lg:w-[35%]`}>
-        <div className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-[80%]`}>
+        <div
+          className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-full min-[1120px]:w-[85%]`}
+        >
           <Image
-            src='/profile_pic.jpeg'
-            sizes='100vw'
+            src="/img/profile_pic.jpeg"
+            sizes="100vw"
             width={1}
             height={1}
             style={{
-              width: "100%",
-              height: "auto",
+              width: '100%',
+              height: 'auto'
             }}
             quality={100}
-            alt='Picture of me'
+            alt="Picture of me"
             className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
           />
         </div>

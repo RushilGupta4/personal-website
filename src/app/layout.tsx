@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import Typing from '../components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
-import { SiBlogger } from 'react-icons/si';
+import { MdOutlineContactPage } from 'react-icons/md';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -55,12 +55,12 @@ const SocialIcons = () => {
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
         <SocialIcon className={dropShadow} target="_blank" url={'https://github.com/rushilgupta4'} />
         <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
-        <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />
-        <Link className={dropShadow} href={'/blogs'}>
-          <div className={'rounded-full border-[8px] border-black'}>
-            <SiBlogger href={'/blogs'} size={34} color={`#000000`} title="Blogs" />
+        <Link className={dropShadow} target="_blank" href={'/data/resume.pdf'}>
+          <div className={'rounded-full border-[8px] border-black bg-black'}>
+            <MdOutlineContactPage size={34} color={`#ffffff`} title="Blogs" />
           </div>
         </Link>
+        <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />
       </div>
       <p
         className={`w-fit text-center text-gray-400 mx-auto border-t border-gray-400 font-medium tracking-[0.175rem] pt-[2px] sm:pt-[4px] text-[12px] sm:text-sm md:text-[14px]`}
@@ -77,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
         <div>
           <NavBar />
-          <div className={`z-10 relative py-4 lg:py-8 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+          <div className={`z-10 relative py-6 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
         </div>
         <SocialIcons />
       </body>
