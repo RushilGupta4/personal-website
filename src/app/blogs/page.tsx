@@ -1,5 +1,5 @@
 import { getAllPostsMeta } from '@/lib/mdx';
-import ShowBlogs from './ShowBlogs';
+import ShowBlogs from '@/components/blogs/ShowBlogs';
 
 const BlogsPage = async () => {
   const blogsMetaData: any = await getAllPostsMeta('blogs');
