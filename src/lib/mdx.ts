@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import BlogInfo from '@/components/mdx/BlogInfo';
 
 const rootDirectory = `${process.cwd()}/content`;
 
@@ -16,7 +17,8 @@ export const getPostBySlug = async (slug: string, directory: string) => {
 
   const { frontmatter, content } = await compileMDX({
     source: fileContent,
-    options: { parseFrontmatter: true }
+    options: { parseFrontmatter: true },
+    components: { BlogInfo }
   });
 
   if (!frontmatter.published) {

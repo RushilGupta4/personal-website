@@ -1,10 +1,5 @@
 import Link from 'next/link';
-import { Roboto_Mono } from 'next/font/google';
-
-const robotoMono = Roboto_Mono({
-  weight: '400',
-  subsets: ['latin']
-});
+import BlogTag from '@/components/blogs/BlogTag';
 
 interface blogMeta {
   title: string;
@@ -24,12 +19,7 @@ const BlogPreview = ({ data }: { data: blogMeta }): React.ReactNode => {
 
           <div className={`flex gap-2 items-center my-[2px] lg:my-0`}>
             {data.tags.map(tag => (
-              <p
-                key={tag}
-                className={`${robotoMono.className} text-[13px] md:text-[15px] tag-${tag} px-[10px] py-[3px] mt-[2px] rounded-[3px] sm:rounded-[3.5px]`}
-              >
-                {tag}
-              </p>
+              <BlogTag key={tag} tag={tag} />
             ))}
           </div>
         </div>

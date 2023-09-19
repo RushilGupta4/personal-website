@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Rushil Gupta',
-  description: 'See a personal side of me, not to be found anywhere else!'
+  description: 'See a personal side of me, not to be found anywhere else!',
+  icons: [{ rel: 'icon', url: '/img/favicon.png' }]
 };
 
 function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
