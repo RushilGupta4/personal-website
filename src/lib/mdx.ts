@@ -7,7 +7,8 @@ const rootDirectory = `${process.cwd()}/content`;
 
 export const getPostBySlug = async (slug: string, directory: string) => {
   const realSlug = slug.replace(/\.mdx$/, '');
-  const filePath = path.join(rootDirectory, directory, `${realSlug}.mdx`);
+  const dirPath = directory.length > 0 ? path.join(rootDirectory, directory) : rootDirectory;
+  const filePath = path.join(dirPath, `${realSlug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
     return { meta: {}, content: null };
@@ -21,8 +22,10 @@ export const getPostBySlug = async (slug: string, directory: string) => {
     components: { BlogInfo }
   });
 
-  if (!frontmatter.published) {
-    return { meta: {}, content: null };
+  if (frontmatter.hasOwnProperty('published')) {
+    if (!frontmatter.published) {
+      return { meta: {}, content: null };
+    }
   }
 
   return { meta: { ...frontmatter, slug: realSlug }, content };
