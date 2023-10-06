@@ -5,7 +5,7 @@ const robotoMono = Roboto_Mono({
   subsets: ['latin']
 });
 
-const BlogTag = async ({ tag }: { tag: string }) => {
+const BlogTag = ({ tag }: { tag: string }) => {
   return (
     <p
       key={tag}

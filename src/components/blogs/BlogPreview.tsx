@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import BlogTag from '@/components/blogs/BlogTag';
 
@@ -10,7 +8,7 @@ interface blogMeta {
   tags: string[];
 }
 
-const BlogPreview = ({ data, lastBlog }: { data: blogMeta; lastBlog: boolean }): React.ReactNode => {
+const BlogPreview = ({ data }: { data: blogMeta }): React.ReactNode => {
   return (
     <div className={`flex flex-col justify-between py-2 lg:py-4 text-left h-full w-full`}>
       <Link href={`blogs/${data.slug}`} className={'w-full'}>
