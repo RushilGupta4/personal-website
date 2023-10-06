@@ -50,9 +50,10 @@ function NavBar() {
 }
 
 const SocialIcons = () => {
-  const dropShadow = `duration-300 drop-shadow-none hover:drop-shadow-[2px_2px_3px_rgba(0,0,0,0.4)]`;
+  const dropShadow = `rounded-full duration-200 shadow-none hover:shadow-[0_7px_10px_3px_rgba(0,0,0,0.15)]`;
+
   return (
-    <div className={'z-10 pt-8 pb-[2vh] sm:pb-[3vh] md:pb-[4vh] lg:pb-[5vh]'}>
+    <div className={'z-10 pt-8 pb-[2vh] sm:pb-[2.5vh] md:pb-[3vh]'}>
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
         <SocialIcon className={dropShadow} target="_blank" url={'https://github.com/rushilgupta4'} />
         <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
@@ -78,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
         <div>
           <NavBar />
-          <div className={`z-10 relative py-6 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+          <div className={`z-10 relative py-4 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
         </div>
         <SocialIcons />
       </body>
