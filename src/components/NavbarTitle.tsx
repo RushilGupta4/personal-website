@@ -2,7 +2,7 @@
 
 import Typewriter from 'typewriter-effect';
 
-const pauseString = 6500;
+const pauseString = 6000;
 const delSpeed = 20;
 const delay = 50;
 const typeSpeedFactor = 0.6;
@@ -39,7 +39,7 @@ const Typing = ({ className }: { className?: string }) => {
               .changeDelay(delay * typeSpeedFactor)
               .changeDeleteSpeed(0.001)
               .typeString(getWaitText())
-              .changeDelay(300)
+              .changeDelay(275)
               .typeString('..')
               .changeDelay(1)
               .typeString('.')

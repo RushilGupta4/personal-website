@@ -18,24 +18,21 @@ export default async function Home() {
   return (
     <div className={`flex-none lg:flex`}>
       {/* Profile Pic */}
-      <div className={`mx-auto w-full lg:w-[35%]`}>
-        <div
-          className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-full min-[1120px]:w-[85%]`}
-        >
-          <Image
-            src="/img/profile_pic.jpeg"
-            sizes="100vw"
-            width={1}
-            height={1}
-            style={{
-              width: '100%',
-              height: 'auto'
-            }}
-            quality={100}
-            alt="Picture of me"
-            className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
-          />
-        </div>
+      <div
+        className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-[30%] min-[1120px]:w-[27.5%]`}
+      >
+        <Image
+          src="/img/profile_pic.jpeg"
+          sizes="100vw"
+          width={0}
+          height={0}
+          style={{
+            width: '100%',
+            height: 'auto'
+          }}
+          alt="Picture of me"
+          className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
+        />
       </div>
 
       {/* About Me */}
@@ -45,10 +42,8 @@ export default async function Home() {
         >
           Hi, I&apos;m Rushil
         </p>
-        <div
-          className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-[17px] md:text-xl lg:text-[21px] text-center lg:text-left px-1 lg:px-8`}
-        >
-          <article className="prose prose-base md:prose-lg lg:prose-xl prose-slate">{content}</article>
+        <div className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-center lg:text-left px-1 lg:px-8`}>
+          <article className="prose prose-base md:prose-lg lg:prose-xl min-[1120px]:prose-p:text-[22px] prose-slate">{content}</article>
         </div>
       </div>
     </div>

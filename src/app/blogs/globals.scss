@@ -7,3 +7,27 @@
   background-color: #ccdeeb;
   color: #5480c8;
 }
+
+.tag-university {
+  background-color: #ebcccc;
+  color: #c86054;
+}
+
+.image-caption {
+  width: 80%;
+  margin: auto;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  p {
+    font-size: 90%;
+    opacity: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+  }
+  img {
+    margin-bottom: 2px;
+  }
+}
