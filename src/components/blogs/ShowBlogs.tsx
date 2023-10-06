@@ -21,7 +21,7 @@ const ShowBlogs = ({ blogsMetaData }: { blogsMetaData: any }) => {
       />
       <div className={`flex flex-col sm:gap-4 md:gap-4 mx-auto justify-center items-stretch`}>
         {filteredBlogs.map((blog: any, index: number) => (
-          <BlogPreview key={blog.title} lastBlog={index == filteredBlogs.length - 1} data={blog} />
+          <BlogPreview key={blog.title} data={blog} />
         ))}
       </div>
     </div>
