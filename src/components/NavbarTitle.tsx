@@ -6,7 +6,7 @@ const pauseString = 6000;
 const delSpeed = 20;
 const delay = 50;
 const typeSpeedFactor = 0.6;
-const descriptions = ['Student Developer', 'Caffeine Addict', 'Chess Enthusiast', 'Software Developer?'];
+const descriptions = ['Student Developer', 'Caffeine Addict', 'Chess Enthusiast', 'Problem Solver', 'Software Developer', 'Data Scientist'];
 
 let firstWaitText = true;
 let waitTexts: string[] = ["I'm a ", 'Sometimes a ', 'Or even a ', 'Maybe a ', 'Often a '];
