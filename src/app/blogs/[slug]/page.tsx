@@ -1,6 +1,12 @@
 import { redirect } from 'next/navigation';
-import { getPostBySlug } from '@/lib/mdx';
+import { getAllPostsMeta, getPostBySlug } from '@/lib/mdx';
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const slugs = await getAllPostsMeta('blogs');
+  return slugs.map(data => ({ slug: data.slug }));
+}
 const getPageContent = async (slug: string) => {
   const { meta, content } = await getPostBySlug(slug, 'blogs');
   return { meta, content };

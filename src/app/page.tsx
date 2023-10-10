@@ -7,13 +7,8 @@ export const metadata: Metadata = {
   description: 'See a personal side of me, not to be found anywhere else!'
 };
 
-const getAboutMe = async () => {
-  const { meta, content } = await getPostBySlug('about-me', '');
-  return { meta, content };
-};
-
 export default async function Home() {
-  const { content } = await getAboutMe();
+  const { content } = await getPostBySlug('about-me', '');
 
   return (
     <div className={`flex-none lg:flex`}>
