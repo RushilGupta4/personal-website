@@ -2,29 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@for $i from 1 through 2 {
+  .about-me span:nth-child(#{$i}) {
+    $url: '/img/brush-stroke-red.png';
+    @if $i % 2 == 1 {
+      $url: '/img/brush-stroke-red.png';
+    }
+    @if $i % 2 == 0 {
+      $url: '/img/brush-stroke-blue.png';
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    background-image: url($url);
+    background-repeat: no-repeat;
+
+    animation: highlight 1s normal forwards ease-in;
+    animation-iteration-count: 1;
+    animation-delay: (1.2 * $i + 0.25) + s !important;
+
+    $offset: -5%;
+    $initSize: 4%;
+
+    background-position: $offset 100%;
+    background-size: $initSize 100%;
+
+    @keyframes highlight {
+      0% {
+        background-position: $offset 100%;
+        background-size: $initSize 100%;
+      }
+      100% {
+        background-position: 0% 100%;
+        background-size: 100% 100%;
+      }
+    }
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
 
 .link-underline {
   border-bottom-width: 0;
@@ -35,6 +47,10 @@ body {
   transition: background-size 0.2s ease-in-out;
 }
 
+.link-underline:hover {
+  background-size: 100% 2px;
+}
+
 .link-underline-blue {
   background-image: linear-gradient(transparent, transparent), linear-gradient(#1c95e7, #1c95e7);
   background-position: 0% 100%;
@@ -43,10 +59,6 @@ body {
     background-size: 100% 2px;
     background-position: 50% 100%;
   }
-}
-
-.link-underline:hover {
-  background-size: 100% 2px;
 }
 
 .base-heading {

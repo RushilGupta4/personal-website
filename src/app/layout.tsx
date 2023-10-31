@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <li className={`text-shadow link link-underline pb-2`}>
+    <li className={`text-shadow link-underline pb-2`}>
       <Link href={href} className={`font-bold text-center text-lg sm:text-xl lg:text-[22px] px-2`}>
         {children}
       </Link>
