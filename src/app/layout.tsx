@@ -2,9 +2,10 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
-import Typing from '../components/NavbarTitle';
+import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`h-full`}>
       <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
+        <GoogleAnalytics ga_id={`G-DW03M6N3DE`} />
         <div>
           <NavBar />
           <div className={`z-10 relative py-4 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
