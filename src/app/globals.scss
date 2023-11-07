@@ -4,12 +4,12 @@
 
 @for $i from 1 through 2 {
   .about-me span:nth-child(#{$i}) {
-    $url: '/img/brush-stroke-red.png';
+    $url: '/img/brush-stroke-red.webp';
     @if $i % 2 == 1 {
-      $url: '/img/brush-stroke-red.png';
+      $url: '/img/brush-stroke-red.webp';
     }
     @if $i % 2 == 0 {
-      $url: '/img/brush-stroke-blue.png';
+      $url: '/img/brush-stroke-blue.webp';
     }
 
     background-image: url($url);

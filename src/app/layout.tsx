@@ -1,10 +1,10 @@
+import { Analytics } from '@vercel/analytics/react';
 import './globals.scss';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { baseUrl } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 
@@ -45,8 +45,6 @@ function NavBar() {
         <p>&#128170;</p> {/* Flexed Bicep */}
         <p>&#129299;</p> {/* Nerd Face */}
         <p>&#9749;</p> {/* Coffee */}
-        <p>&#x1F4BB;</p> {/* Personal Laptop */}
-        <p>&#128170;</p> {/* Flexed Bicep */}
       </div>
       <div className={'z-10 relative'}>
         <ul className={`flex items-center pt-6 pb-10 sm:pb-12 justify-center sm:justify-start gap-x-4 sm:gap-x-12`}>
@@ -89,12 +87,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`h-full`}>
       <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
-        <GoogleAnalytics ga_id={`G-DW03M6N3DE`} />
         <div>
           <NavBar />
           <div className={`z-10 relative py-4 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
         </div>
         <SocialIcons />
+        <Analytics />
       </body>
     </html>
   );
