@@ -1,12 +1,11 @@
 import { redirect } from 'next/navigation';
 import { getAllPostsMeta, getPostBySlug } from '@/lib/mdx';
 
-export const dynamicParams = false;
-
 export async function generateStaticParams() {
   const slugs = await getAllPostsMeta('blogs');
   return slugs.map(data => ({ slug: data.slug }));
 }
+
 const getPageContent = async (slug: string) => {
   const { meta, content } = await getPostBySlug(slug, 'blogs');
   return { meta, content };
@@ -14,7 +13,13 @@ const getPageContent = async (slug: string) => {
 
 export async function generateMetadata({ params }: { params: any }) {
   const { meta }: { meta: any } = await getPageContent(params.slug);
-  return { title: `${meta.title} | Rushil Gupta` };
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `/blogs/${params.slug}`
+    }
+  };
 }
 
 const Page = async ({ params }: { params: any }) => {

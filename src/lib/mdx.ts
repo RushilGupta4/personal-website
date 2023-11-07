@@ -5,7 +5,7 @@ import BlogInfo from '@/components/mdx/BlogInfo';
 
 const rootDirectory = `${process.cwd()}/content`;
 
-export const getPostBySlug = async (slug: string, directory: string) => {
+export const getPostBySlug = async (slug: string, directory: string): Promise<{ meta: any; content: any }> => {
   const realSlug = slug.replace(/\.mdx$/, '');
   const dirPath = directory.length > 0 ? path.join(rootDirectory, directory) : rootDirectory;
   const filePath = path.join(dirPath, `${realSlug}.mdx`);
