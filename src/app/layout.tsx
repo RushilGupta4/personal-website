@@ -77,7 +77,7 @@ const SocialIcons = () => {
         <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />
       </div>
       <p
-        className={`w-fit text-center text-gray-400 mx-auto border-t border-gray-400 font-medium tracking-[0.175rem] pt-[2px] sm:pt-[4px] text-[12px] sm:text-sm md:text-[14px]`}
+        className={`w-fit text-center text-gray-500 mx-auto border-t border-gray-500 font-medium tracking-[0.175rem] pt-[2px] sm:pt-[4px] text-[12px] sm:text-sm md:text-[14px]`}
       >
         &#169; 2023 RUSHIL GUPTA
       </p>
