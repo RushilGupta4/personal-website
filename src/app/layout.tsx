@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
   },
   robots: {
-    index: false,
+    index: true,
     follow: true,
     nocache: true
   }
