@@ -3,7 +3,6 @@ import { getPostBySlug } from '@/lib/mdx';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Me | Rushil Gupta',
   description: 'See a personal side of me, not to be found anywhere else!'
 };
 
@@ -27,6 +26,7 @@ export default async function Home() {
           }}
           alt="Picture of me"
           className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
+          placeholder="blur"
           priority
         />
       </div>

@@ -3,9 +3,11 @@ import { getAllPostsMeta } from '@/lib/mdx';
 import ShowBlogs from '@/components/blogs/ShowBlogs';
 
 export const metadata: Metadata = {
-  title: 'Blogs | Rushil Gupta',
-  description:
-    'This is my first real attempt at blogging and recording interesting parts of my life. Over here, you will find random blogs on topics that I like.'
+  title: 'Blogs',
+  description: 'This is my first real attempt at blogging interesting parts of my life. Over here, you will find random blogs on topics that I like.',
+  alternates: {
+    canonical: `/blogs`
+  }
 };
 
 const BlogsPage = async () => {

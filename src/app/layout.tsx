@@ -1,18 +1,29 @@
 import './globals.scss';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Inter } from 'next/font/google';
 import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-
-const inter = Inter({ subsets: ['latin'] });
+import { baseUrl } from '@/lib/constants';
+import { inter } from '@/lib/fonts';
 
 export const metadata: Metadata = {
-  title: 'Rushil Gupta',
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: 'Rushil Gupta',
+    template: `%s - Rushil Gupta`
+  },
   description: 'See a personal side of me, not to be found anywhere else!',
-  icons: [{ rel: 'icon', url: '/img/favicon.png' }]
+  icons: [{ rel: 'icon', url: '/img/favicon.png' }],
+  verification: {
+    google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true
+  }
 };
 
 function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
