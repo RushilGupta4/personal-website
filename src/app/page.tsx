@@ -18,7 +18,7 @@ export default async function Home() {
       >
         <Image
           src={profilePic}
-          sizes="100vw"
+          sizes="40vw"
           width={0}
           height={0}
           style={{
