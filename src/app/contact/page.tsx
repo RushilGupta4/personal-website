@@ -6,13 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function ContactPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    e.target.reset();
-
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,
       message: e.target.message.value
     };
+    e.target.reset();
 
     const resp = await fetch('/api/email', {
       method: 'POST',
