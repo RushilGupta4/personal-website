@@ -48,7 +48,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 
 function NavBar() {
   return (
-    <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-8 px-3 sm:px-16 md:px-20 lg:px-32`}>
+    <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-7 px-3 sm:px-16 md:px-20 lg:px-32`}>
       <div className={`emojiWrapper fixed text-4xl blur-[1.25px] sm:blur-[1.5px] md:blur-[1.75px] brightness-50`}>
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
@@ -62,6 +62,7 @@ function NavBar() {
         <ul className={`flex items-center pt-6 pb-10 sm:pb-12 justify-center sm:justify-start gap-x-4 sm:gap-x-12`}>
           <NavItem href="/">Home</NavItem>
           <NavItem href="/blogs">Blogs</NavItem>
+          <NavItem href="/contact">Contact</NavItem>
         </ul>
         <div className="min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px]">
           <Typing className={`font-bold text-shadow leading-none empty:inline-block text-[39px] sm:text-[56px] md:text-[64px] lg:text-[72px]`} />
