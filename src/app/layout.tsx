@@ -10,7 +10,7 @@ import { inter } from '@/lib/fonts';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
 const description =
-  "Hi! I'm Rushil Gupta, often known as a geeky CS nerd, gym rat, and caffeine addict. However, here, you can discover a unique side of me not to be found anywhere else!";
+  "Hi! I'm Rushil Gupta, a student developer who is often known as a geeky CS nerd, gym rat, and caffeine addict. However, here, you can discover a unique side of me not to be found anywhere else!";
 
 export const metadata: Metadata = {
   metadataBase: new URL(altUrl),
