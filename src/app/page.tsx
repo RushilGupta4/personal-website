@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getPostBySlug } from '@/lib/mdx';
 import type { Metadata } from 'next';
-import profilePic from '@/../public/img/profile_pic.jpeg';
+import profilePic from '@/../public/img/profile_pic.webp';
 
 export const metadata: Metadata = {
   description: 'See a personal side of me, not to be found anywhere else!'
@@ -18,13 +18,8 @@ export default async function Home() {
       >
         <Image
           src={profilePic}
-          sizes="40vw"
-          width={0}
-          height={0}
-          style={{
-            width: '100%',
-            height: 'auto'
-          }}
+          width={512}
+          height={512}
           alt="Picture of me"
           className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
           placeholder="blur"
