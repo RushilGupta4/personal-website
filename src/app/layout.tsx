@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
-import { baseUrl } from '@/lib/constants';
+import { baseUrl, altUrl } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
@@ -13,7 +13,7 @@ const description =
   "Hi! I'm Rushil Gupta, often known as a geeky CS nerd, gym rat, and caffeine addict. However, here, you can discover a unique side of me not to be found anywhere else!";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(altUrl),
   title: {
     default: title,
     template: `%s - Rushil Gupta`
@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     description: description,
     url: baseUrl,
     type: 'website'
+  },
+  alternates: {
+    canonical: `/`
   }
 };
 
