@@ -15,9 +15,9 @@
     background-image: url($url);
     background-repeat: no-repeat;
 
-    animation: highlight 1s normal forwards ease-in;
+    animation: highlight 0.8s normal forwards ease-in;
     animation-iteration-count: 1;
-    animation-delay: (1.2 * $i + 0.25) + s !important;
+    animation-delay: (1 * ($i - 1) + 0.5) + s !important;
 
     $offset: -5%;
     $initSize: 4%;

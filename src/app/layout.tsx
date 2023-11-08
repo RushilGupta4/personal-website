@@ -48,7 +48,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 
 function NavBar() {
   return (
-    <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-7 px-3 sm:px-16 md:px-20 lg:px-32`}>
+    <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-[30px] px-3 sm:px-16 md:px-20 lg:px-32`}>
       <div className={`emojiWrapper fixed text-4xl blur-[1.25px] sm:blur-[1.5px] md:blur-[1.75px] brightness-50`}>
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
@@ -82,7 +82,7 @@ const SocialIcons = () => {
         <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
         <Link className={dropShadow} target="_blank" href={'https://rushilgupta4.github.io/resume.pdf'}>
           <div className={'rounded-full border-[8px] border-black bg-black'}>
-            <MdOutlineContactPage size={34} color={`#ffffff`} title="Blogs" />
+            <MdOutlineContactPage size={34} color={`#ffffff`} title="Resume" />
           </div>
         </Link>
         <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />

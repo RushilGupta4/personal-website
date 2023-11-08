@@ -11,22 +11,16 @@ export default function ContactPage() {
       email: e.target.email.value,
       message: e.target.message.value
     };
-    e.target.reset();
 
-    const resp = await fetch('/api/email', {
+    e.target.reset();
+    toast.success('Thanks for contacting me, I will be in touch soon!', {
+      position: toast.POSITION.TOP_CENTER
+    });
+
+    await fetch('/api/email', {
       method: 'POST',
       body: JSON.stringify(data)
     });
-
-    if (resp.status === 200) {
-      toast.success('Thanks for contacting me, I will be in touch soon!', {
-        position: toast.POSITION.TOP_CENTER
-      });
-    } else {
-      toast.error('Something went wrong. If the error persists, please report it.', {
-        position: toast.POSITION.TOP_CENTER
-      });
-    }
   };
 
   const shadow = 'shadow-[0px_1px_2px_1px_rgba(0,0,0,0.2)]';
