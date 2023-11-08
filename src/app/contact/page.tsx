@@ -1,8 +1,12 @@
 'use client';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ContactPage() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    e.target.reset();
 
     const data = {
       name: e.target.name.value,
@@ -10,10 +14,20 @@ export default function ContactPage() {
       message: e.target.message.value
     };
 
-    await fetch('/api/email', {
+    const resp = await fetch('/api/email', {
       method: 'POST',
       body: JSON.stringify(data)
     });
+
+    if (resp.status === 200) {
+      toast.success('Thanks for contacting me, I will be in touch soon!', {
+        position: toast.POSITION.TOP_CENTER
+      });
+    } else {
+      toast.error('Something went wrong. If the error persists, please report it.', {
+        position: toast.POSITION.TOP_CENTER
+      });
+    }
   };
 
   const shadow = 'shadow-[0px_1px_2px_1px_rgba(0,0,0,0.2)]';
@@ -40,6 +54,7 @@ export default function ContactPage() {
           Submit
         </button>
       </form>
+      <ToastContainer position="top-center" autoClose={3000} closeOnClick draggable pauseOnHover theme="dark" />
     </div>
   );
 }
