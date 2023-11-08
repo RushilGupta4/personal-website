@@ -18,6 +18,12 @@ export async function generateMetadata({ params }: { params: any }) {
     description: meta.description,
     alternates: {
       canonical: `/blogs/${params.slug}`
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `/blogs/${params.slug}`,
+      type: 'website'
     }
   };
 }
@@ -30,8 +36,8 @@ const Page = async ({ params }: { params: any }) => {
   }
 
   return (
-    <div className="pt-4 md:pt-8">
-      <article className="prose prose-base md:prose-lg prose-slate">{content}</article>
+    <div className="pt-4 md:pt-8 mx-auto">
+      <article className="mx-auto prose prose-base md:prose-lg prose-slate">{content}</article>
     </div>
   );
 };

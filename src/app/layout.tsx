@@ -8,14 +8,17 @@ import { MdOutlineContactPage } from 'react-icons/md';
 import { baseUrl } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 
+const title = 'Rushil Gupta | CS @ Ashoka University';
+const description =
+  "Hi! I'm Rushil Gupta, often known as a geeky CS nerd, gym rat, and caffeine addict. However, here, you can discover a unique side of me not to be found anywhere else!";
+
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Rushil Gupta',
+    default: title,
     template: `%s - Rushil Gupta`
   },
-  description:
-    "Welcome to the world of Rushil Gupta, a geeky CS nerd, gym rat, and caffeine addict at Ashoka University. Discover a unique side of me and join my journey. Explore my projects, read my thoughts, and let's connect!",
+  description: description,
   icons: [{ rel: 'icon', url: '/img/favicon.png' }],
   verification: {
     google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
@@ -24,6 +27,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     nocache: true
+  },
+  openGraph: {
+    title: title,
+    description: description,
+    url: baseUrl,
+    type: 'website'
   }
 };
 
@@ -66,7 +75,7 @@ const SocialIcons = () => {
   const dropShadow = `rounded-full duration-200 shadow-none hover:shadow-[0_7px_10px_3px_rgba(0,0,0,0.15)]`;
 
   return (
-    <div className={'z-10 pt-8 pb-[2vh] sm:pb-[2.5vh] md:pb-[3vh]'}>
+    <div className={'z-10 pt-5 pb-[2vh]'}>
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
         <SocialIcon className={dropShadow} target="_blank" url={'https://github.com/rushilgupta4'} />
         <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
