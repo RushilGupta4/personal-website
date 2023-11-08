@@ -25,7 +25,7 @@ const getWaitText = () => {
 
 const Typing = ({ className }: { className?: string }) => {
   return (
-    <div className={className ? className : ''}>
+    <h2 className={className ? className : ''}>
       <Typewriter
         onInit={typewriter => {
           descriptions.map(text => {
@@ -45,7 +45,6 @@ const Typing = ({ className }: { className?: string }) => {
               .typeString('.')
               .pauseFor(300)
               .deleteAll();
-            // .pauseFor(50);
           });
           typewriter.start();
         }}
@@ -54,7 +53,7 @@ const Typing = ({ className }: { className?: string }) => {
           cursorClassName: 'typing-cursor'
         }}
       />
-    </div>
+    </h2>
   );
 };
 

@@ -34,11 +34,11 @@ export default async function Home() {
 
       {/* About Me */}
       <div className={`mx-auto my-0 lg:my-auto w-full lg:w-[70%] min-[1600px]:w-[80%] pt-2 lg:pt-4 pb-0 lg:pb-24 pl-0 lg:pl-8`}>
-        <p
+        <h1
           className={`base-heading underline decoration-[2px] sm:decoration-[3px] underline-offset-[8px] sm:underline-offset-[12px] text-4xl sm:text-p[40px] md:text-5xl lg:text-6xl`}
         >
           Hi, I&apos;m Rushil
-        </p>
+        </h1>
         <div className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-center lg:text-left px-1 lg:px-8`}>
           <article className="about-me prose prose-base md:prose-lg lg:prose-xl min-[1120px]:prose-p:text-[22px] prose-slate prose-a:no-underline">
             {content}
