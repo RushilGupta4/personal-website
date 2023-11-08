@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     default: 'Rushil Gupta',
     template: `%s - Rushil Gupta`
   },
-  description: 'See a personal side of me, not to be found anywhere else!',
+  description:
+    "Welcome to the world of Rushil Gupta, a geeky CS nerd, gym rat, and caffeine addict at Ashoka University. Discover a unique side of me and join my journey. Explore my projects, read my thoughts, and let's connect!",
   icons: [{ rel: 'icon', url: '/img/favicon.png' }],
   verification: {
     google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
