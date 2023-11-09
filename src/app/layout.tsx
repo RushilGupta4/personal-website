@@ -86,7 +86,7 @@ const SocialIcons = () => {
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
         <SocialIcon className={dropShadow} target="_blank" url={'https://github.com/rushilgupta4'} />
         <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
-        <Link className={dropShadow} target="_blank" href={'https://rushilgupta4.github.io/resume.pdf'}>
+        <Link className={dropShadow} target="_blank" href={'/resume.pdf'}>
           <div className={'rounded-full border-[8px] border-black bg-black'}>
             <MdOutlineContactPage size={34} color={`#ffffff`} title="Resume" />
           </div>
