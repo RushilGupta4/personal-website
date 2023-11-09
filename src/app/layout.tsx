@@ -19,7 +19,10 @@ export const metadata: Metadata = {
     template: `%s - Rushil Gupta`
   },
   description: description,
-  icons: [{ rel: 'icon', url: '/img/favicon.png' }],
+  icons: {
+    icon: '/img/favicon.png',
+    apple: '/img/favicon.png'
+  },
   verification: {
     google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
   },
