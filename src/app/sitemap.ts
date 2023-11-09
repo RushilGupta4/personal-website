@@ -13,15 +13,15 @@ export default async function sitemap() {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1
+      lastModified: new Date()
     },
     {
       url: `${baseUrl}/blogs`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8
+      lastModified: new Date()
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date()
     },
     ...postUrls
   ];
