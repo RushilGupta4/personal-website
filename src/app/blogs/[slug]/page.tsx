@@ -1,5 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAllPostsMeta, getPostBySlug } from '@/lib/mdx';
+import SchemaData from '@/components/SchemaData';
+import { baseUrl } from '@/lib/constants';
 
 export async function generateStaticParams() {
   const slugs = await getAllPostsMeta('blogs');
@@ -29,16 +31,36 @@ export async function generateMetadata({ params }: { params: any }) {
 }
 
 const Page = async ({ params }: { params: any }) => {
-  const { content } = await getPageContent(params.slug);
+  const { meta, content } = await getPageContent(params.slug);
+
+  const jsonLd = {
+    '@type': 'BlogPosting',
+    name: 'Rushil Gupta',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/blogs/${params.slug}`
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Rushil Gupta',
+      url: 'https://www.rushilgupta.tech'
+    },
+    description: meta.description,
+    headline: meta.title,
+    datePublished: new Date(meta.publishDate),
+    url: `/blogs/${params.slug}`,
+    keywords: meta.keywords
+  };
 
   if (!content) {
     redirect('/blogs');
   }
 
   return (
-    <div className="pt-4 md:pt-8 mx-auto">
+    <section className="pt-4 md:pt-8 mx-auto">
+      <SchemaData data={jsonLd} />
       <article className="mx-auto prose prose-base md:prose-lg prose-slate">{content}</article>
-    </div>
+    </section>
   );
 };
 

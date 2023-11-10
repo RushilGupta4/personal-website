@@ -2,7 +2,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: `Contact`,
-  description: `Connect with me here!`
+  description: `Connect with me here!`,
+  alternates: {
+    canonical: `/contact`
+  }
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
