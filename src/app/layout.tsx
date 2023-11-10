@@ -10,7 +10,7 @@ import { inter } from '@/lib/fonts';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
 const description =
-  "Hi! I'm Rushil Gupta, a student developer who is often known as a geeky CS nerd, gym rat, and caffeine addict. However, here, you can discover a unique side of me not to be found anywhere else!";
+  "I'm a student developer often known as a CS nerd, gym rat, and caffeine addict. Here, you can discover a side of me that cannot be found anywhere else!";
 
 export const metadata: Metadata = {
   metadataBase: new URL(altUrl),
@@ -93,11 +93,11 @@ const SocialIcons = () => {
         </Link>
         <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />
       </div>
-      <p
+      <h2
         className={`w-fit text-center text-gray-500 mx-auto border-t border-gray-500 font-medium tracking-[0.175rem] pt-[2px] sm:pt-[4px] text-[12px] sm:text-sm md:text-[14px]`}
       >
         &#169; 2023 RUSHIL GUPTA
-      </p>
+      </h2>
     </div>
   );
 };
