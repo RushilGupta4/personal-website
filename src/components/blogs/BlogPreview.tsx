@@ -24,7 +24,9 @@ const BlogPreview = ({ data }: { data: blogMeta }): React.ReactNode => {
           </div>
         </div>
       </Link>
-      <p className={`text-slate-500 text-[16px] md:text-[18px] font-normal pt-[2px]`}>{data.description}</p>
+      <p className={`line-clamp-4 md:line-clamp-3 lg:line-clamp-2 text-slate-500 text-[16px] md:text-[18px] font-normal pt-[2px]`}>
+        {data.description}
+      </p>
     </div>
   );
 };
