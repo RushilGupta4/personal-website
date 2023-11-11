@@ -49,7 +49,8 @@ const Page = async ({ params }: { params: any }) => {
     headline: meta.title,
     datePublished: new Date(meta.publishDate),
     url: `/blogs/${params.slug}`,
-    keywords: meta.keywords
+    keywords: meta.keywords,
+    image: meta.image
   };
 
   if (!content) {
