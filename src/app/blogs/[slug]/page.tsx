@@ -43,7 +43,7 @@ const Page = async ({ params }: { params: any }) => {
     author: {
       '@type': 'Person',
       name: 'Rushil Gupta',
-      url: 'https://www.rushilgupta.tech'
+      url: baseUrl
     },
     description: meta.description,
     headline: meta.title,
