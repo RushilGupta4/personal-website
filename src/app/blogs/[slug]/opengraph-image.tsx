@@ -30,7 +30,8 @@ export default async function og({ params }: { params: { slug: string } }) {
           {/* Title */}
           <div tw="mx-auto text-[80px] font-bold">{meta?.title}</div>
           <hr tw="w-1/2 mx-auto mt-6 mb-8 border-neutral-100 opacity-80" />
-          {/* Tags */}
+
+          {/* Info */}
           <div tw="mx-auto flex items-center text-4xl text-neutral-100">
             <div>{meta?.author}</div>
             <div tw="w-4 h-4 mx-6 rounded-full bg-neutral-300" />
