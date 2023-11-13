@@ -18,6 +18,7 @@ const ShowBlogs = ({ blogsMetaData }: { blogsMetaData: any }) => {
           setSearchQuery(val);
           setFilteredBlogs(blogsMetaData.filter((blog: any) => blog.title.toLowerCase().includes(val.toLowerCase())));
         }}
+        name={`Blogs`}
       />
       <div className={`flex flex-col sm:gap-4 md:gap-4 mx-auto justify-center items-stretch`}>
         {filteredBlogs.map((blog: any, index: number) => (

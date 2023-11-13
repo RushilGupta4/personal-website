@@ -9,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`mx-auto w-11/12 sm:w-3/4 md:w-[65%] lg:w-[57.5%] min-[1100px]:w-[50%]`}>{children}</div>;
+  return <div className={`mx-auto w-11/12 sm:w-3/4 md:w-[65%] lg:w-[57.5%] min-[1100px]:w-[50%] min-[1280px]:w-[40%]`}>{children}</div>;
 }
