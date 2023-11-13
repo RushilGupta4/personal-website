@@ -5,12 +5,12 @@ import Link from 'next/link';
 import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
-import { baseUrl, altUrl } from '@/lib/constants';
+import { baseUrl, altUrl, linkedInUrl, githubUrl, emailId } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
 const description =
-  "I'm a student developer often known as a CS nerd, gym rat, and caffeine addict. Here, you can discover a side of me that cannot be found anywhere else!";
+  "I'm Rushil Gupta, a student developer often known as a CS nerd, gym rat, and caffeine addict. Here, you can discover a side of me that cannot be found anywhere else!";
 
 export const metadata: Metadata = {
   metadataBase: new URL(altUrl),
@@ -39,7 +39,8 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: `/`
-  }
+  },
+  authors: [{ name: 'Rushil Gupta', url: baseUrl }]
 };
 
 function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
@@ -65,12 +66,13 @@ function NavBar() {
         <p>&#128170;</p> {/* Flexed Bicep */}
       </div>
       <div className={'z-10 relative'}>
-        <ul className={`flex items-center pt-6 pb-10 sm:pb-12 justify-center sm:justify-start gap-x-4 sm:gap-x-12`}>
+        <ul className={`flex items-center pt-6 pb-10 sm:pb-12 justify-center sm:justify-start gap-x-3 sm:gap-x-6 lg:gap-x-8`}>
           <NavItem href="/">Home</NavItem>
           <NavItem href="/blogs">Blogs</NavItem>
+          <NavItem href="/projects">Projects</NavItem>
           <NavItem href="/contact">Contact</NavItem>
         </ul>
-        <div className="min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px]">
+        <div className="min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-72px]">
           <Typing className={`font-bold text-shadow leading-none empty:inline-block text-[39px] sm:text-[56px] md:text-[64px] lg:text-[72px]`} />
         </div>
       </div>
@@ -84,8 +86,8 @@ const SocialIcons = () => {
   return (
     <div className={'z-10 pt-5 pb-[2vh]'}>
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
-        <SocialIcon className={dropShadow} target="_blank" url={'https://github.com/rushilgupta4'} />
-        <SocialIcon className={dropShadow} target="_blank" url={'https://linkedin.com/in/rushilgupta4'} bgColor={'#0a66c2'} />
+        <SocialIcon className={dropShadow} target="_blank" url={githubUrl} bgColor="#1C2128" />
+        <SocialIcon className={dropShadow} target="_blank" url={linkedInUrl} bgColor={'#0a66c2'} />
         <Link className={dropShadow} target="_blank" href={'/resume.pdf'}>
           <div className={'rounded-full border-[8px] border-black bg-black'}>
             <MdOutlineContactPage size={34} color={`#ffffff`} title="Resume" />
@@ -103,12 +105,14 @@ const SocialIcons = () => {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const bg = `bg-white`;
+
   return (
     <html lang="en" className={`h-full`}>
-      <body className={`${inter.className} h-full bg-[#ffffff] text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
+      <body className={`${inter.className} ${bg} h-full text-black mx-auto max-w-full overflow-x-hidden flex flex-col justify-between`}>
         <div>
           <NavBar />
-          <div className={`z-10 relative py-4 md:py-8 lg:py-10 px-4 sm:px-16 md:px-20 lg:px-24 bg-[#ffffff]`}>{children}</div>
+          <div className={`${bg} z-10 relative py-4 md:py-6 lg:py-8 px-4 sm:px-16 md:px-20 lg:px-24`}>{children}</div>
         </div>
         <SocialIcons />
         <Analytics />

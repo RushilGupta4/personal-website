@@ -2,10 +2,10 @@ import { baseUrl } from '@/lib/constants';
 import { getAllPostsMeta } from '@/lib/mdx';
 
 export default async function sitemap() {
-  // Get all posts
-  const posts = await getAllPostsMeta('blogs');
-  const postUrls =
-    posts?.map(post => ({
+  // Get all blogs
+  const blogs = await getAllPostsMeta('blogs');
+  const blogsUrls =
+    blogs?.map(post => ({
       url: `${baseUrl}/blogs/${post.slug}`,
       lastModified: new Date()
     })) ?? [];
@@ -20,6 +20,10 @@ export default async function sitemap() {
       lastModified: new Date()
     },
     {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date()
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: new Date()
     },
@@ -27,6 +31,6 @@ export default async function sitemap() {
       url: `${baseUrl}/resume.pdf`,
       lastModified: new Date()
     },
-    ...postUrls
+    ...blogsUrls
   ];
 }

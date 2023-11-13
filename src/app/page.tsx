@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { getPostBySlug } from '@/lib/mdx';
 import profilePic from '@/../public/img/profile_pic.webp';
 import SchemaData from '@/components/SchemaData';
+import { linkedInUrl } from '@/lib/constants';
 
 export default async function Home() {
   const { content } = await getPostBySlug('about-me', '');
@@ -10,7 +11,7 @@ export default async function Home() {
     '@type': 'Person',
     name: 'Rushil Gupta',
     jobTitle: 'Student Developer',
-    sameAs: ['https://www.linkedin.com/in/rushilgupta4'],
+    sameAs: [linkedInUrl],
     email: 'rushilgupta4@gmail.com',
     affiliation: {
       '@type': 'Organization',
@@ -20,7 +21,7 @@ export default async function Home() {
   };
 
   return (
-    <section className={`flex-none lg:flex lg:pt-4`}>
+    <section className={`flex-none lg:flex pt-2 lg:pt-8`}>
       <SchemaData data={jsonLd} />
       {/* Profile Pic */}
       <div

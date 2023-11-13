@@ -29,7 +29,7 @@ export default function ContactPage() {
   return (
     <div>
       <h1
-        className={`base-heading underline decoration-3 md:decoration-4 underline-offset-[6px] sm:underline-offset-[8px] text-[40px] sm:text-[44px] md:text-[50px] lg:text-[56px]`}
+        className={`base-heading underline decoration-3 md:decoration-4 underline-offset-[6px] sm:underline-offset-[8px] text-[40px] sm:text-[44px] md:text-[48px] lg:text-[54px]`}
       >
         Contact Me
       </h1>
