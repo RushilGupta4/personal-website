@@ -10,7 +10,7 @@ import { inter } from '@/lib/fonts';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
 const description =
-  "I'm Rushil Gupta, a student developer often known as a CS nerd, gym rat, and caffeine addict. Here, you can discover a side of me that cannot be found anywhere else!";
+  "I'm Rushil Gupta, a student developer often known as a CS nerd, gym rat, and caffeine addict. Discover a side of me that cannot be found anywhere else!";
 
 export const metadata: Metadata = {
   metadataBase: new URL(altUrl),
@@ -93,7 +93,7 @@ const SocialIcons = () => {
             <MdOutlineContactPage size={34} color={`#ffffff`} title="Resume" />
           </div>
         </Link>
-        <SocialIcon className={dropShadow} network={'email'} url={'mailto:rushilgupta4@gmail.com'} bgColor={'#d53833'} />
+        <SocialIcon className={dropShadow} network={'email'} url={emailId} bgColor={'#d53833'} />
       </div>
       <h2
         className={`w-fit text-center text-gray-500 mx-auto border-t border-gray-500 font-medium tracking-[0.175rem] pt-[2px] sm:pt-[4px] text-[12px] sm:text-sm md:text-[14px]`}
