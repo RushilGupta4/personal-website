@@ -17,7 +17,7 @@ const BlogPreview = ({ data }: { data: any }): React.ReactNode => {
           </div>
         </div>
       </Link>
-      <p className={`line-clamp-4 md:line-clamp-3 lg:line-clamp-2 text-slate-500 text-[16px] md:text-[18px] font-normal pt-[2px]`}>
+      <p className={`line-clamp-4 md:line-clamp-3 lg:line-clamp-2 text-slate-500 text-[16px] md:text-[18px] font-[325] pt-[2px]`}>
         {data.description}
       </p>
     </div>

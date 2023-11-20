@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { SocialIcon } from 'react-social-icons';
 
 const ProjectPreview = ({ data }: { data: any }): React.ReactNode => {
-  const animation = `transition-all w-[98.5%] hover:w-full duration-200 shadow-[0_2px_4px_1px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_9px_3px_rgba(0,0,0,0.15)]`;
+  const animation = `transition-all scale-100 hover:scale-[1.01] duration-200 shadow-[0_2px_4px_1px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_9px_3px_rgba(0,0,0,0.15)]`;
 
   return (
     <div className={`m-auto flex flex-col justify-between border border-slate-300 text-left rounded-md h-full ${animation}`}>
