@@ -22,6 +22,8 @@ const Input = ({
   placeholder?: string;
 }) => {
   const baseClassName = `transition-all duration-200 group-hover:brightness-[1.3] focus:group-hover:brightness-100 w-full outline-none text-slate-200 bg-slate-800 text-[0.95em]`;
+  const [isFocused, setIsFocused] = useState(false);
+  const [value, setValue] = useState('');
 
   if (textArea) {
     return (
@@ -30,8 +32,6 @@ const Input = ({
       </div>
     );
   }
-  const [isFocused, setIsFocused] = useState(false);
-  const [value, setValue] = useState('');
 
   return (
     <div className="group relative w-full">
