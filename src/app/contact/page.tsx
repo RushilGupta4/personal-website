@@ -1,7 +1,61 @@
 'use client';
 
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+const capitalize = (name: string) => {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
+const Input = ({
+  type = 'text',
+  name,
+  required,
+  textArea = false,
+  placeholder
+}: {
+  type?: string;
+  name: string;
+  required: boolean;
+  textArea?: boolean;
+  placeholder?: string;
+}) => {
+  const baseClassName = `transition-all duration-200 group-hover:brightness-[1.3] focus:group-hover:brightness-100 w-full outline-none text-slate-200 bg-slate-800 text-[0.95em]`;
+
+  if (textArea) {
+    return (
+      <div className="group w-full">
+        <textarea name={name} required={required} placeholder={placeholder} className={`py-4 px-4 ${baseClassName} rounded-md`} />
+      </div>
+    );
+  }
+  const [isFocused, setIsFocused] = useState(false);
+  const [value, setValue] = useState('');
+
+  return (
+    <div className="group relative w-full">
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className={`pt-[26px] pb-2 px-4  ${baseClassName} rounded-[10px]`}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        value={value}
+        placeholder={placeholder}
+        onChange={e => setValue(e.target.value)}
+      />
+      <label
+        className={`absolute left-4 text-white ${
+          isFocused || value.length > 0 ? 'top-[12.5%] text-[0.85em]' : 'top-[27.5%]'
+        } pointer-events-none transition-all duration-200`}
+      >
+        {capitalize(name)}
+      </label>
+    </div>
+  );
+};
 
 export default function ContactPage() {
   const handleSubmit = async (e: any) => {
@@ -23,9 +77,6 @@ export default function ContactPage() {
     });
   };
 
-  const shadow = 'shadow-[0px_1px_2px_1px_rgba(0,0,0,0.2)]';
-  const inputClass = `${shadow} border-2 border-double border-slate-700 rounded-md mb-[10px] py-[5px] px-2 text-slate-700`;
-
   return (
     <div>
       <h1
@@ -33,17 +84,12 @@ export default function ContactPage() {
       >
         Contact Me
       </h1>
-      <form onSubmit={handleSubmit} className={`flex flex-col mx-auto mt-4`}>
-        <label className="px-1">Name</label>
-        <input type={`text`} name={`name`} className={inputClass} required />
+      <form onSubmit={handleSubmit} className={`flex flex-col mx-auto mt-4 gap-y-4`}>
+        <Input type={`text`} name={`name`} required />
+        <Input type={`email`} name={`email`} required />
+        <Input name={`message`} placeholder={`Mesage ...`} textArea required />
 
-        <label className="px-1">Email</label>
-        <input type={`email`} name={`email`} className={inputClass} required />
-
-        <label className="px-1">Message</label>
-        <textarea name="message" className={inputClass} required></textarea>
-
-        <button type="submit" className={`${shadow} mt-2 mx-auto w-full sm:w-5/6 md:w-2/3 lg:w-1/3 py-2 rounded-md bg-slate-800 text-white`}>
+        <button type="submit" className={`mt-2 mx-auto w-full sm:w-5/6 md:w-2/3 lg:w-1/3 py-2 rounded-md bg-slate-800 text-white`}>
           Submit
         </button>
       </form>

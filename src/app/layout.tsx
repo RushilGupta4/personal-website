@@ -1,12 +1,12 @@
-import { Analytics } from '@vercel/analytics/react';
 import './globals.scss';
-import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import Link from 'next/link';
 import Typing from '@/components/NavbarTitle';
 import { SocialIcon } from 'react-social-icons';
 import { MdOutlineContactPage } from 'react-icons/md';
 import { baseUrl, altUrl, linkedInUrl, githubUrl, emailId } from '@/lib/constants';
 import { inter } from '@/lib/fonts';
+import type { Metadata } from 'next';
 
 const title = 'Rushil Gupta | CS @ Ashoka University';
 const description =
@@ -55,7 +55,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 
 function NavBar() {
   return (
-    <div className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-[30px] px-3 sm:px-16 md:px-20 lg:px-32`}>
+    <header className={`text-white bg-gradient-to-b from-[#202c54] to-[#070d1d] backdrop-blur-sm pb-6 sm:pb-[30px] px-3 sm:px-16 md:px-20 lg:px-32`}>
       <div className={`emojiWrapper fixed text-4xl blur-[1.25px] sm:blur-[1.5px] md:blur-[1.75px] brightness-50`}>
         <p>&#9749;</p> {/* Coffee */}
         <p>&#x1F4BB;</p> {/* Personal Laptop */}
@@ -72,11 +72,11 @@ function NavBar() {
           <NavItem href="/projects">Projects</NavItem>
           <NavItem href="/contact">Contact</NavItem>
         </ul>
-        <div className="min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-72px]">
+        <div className="min-h-[39px] sm:min-h-[56px] md:min-h-[64px] lg:min-h-[72px]">
           <Typing className={`font-bold text-shadow leading-none empty:inline-block text-[39px] sm:text-[56px] md:text-[64px] lg:text-[72px]`} />
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 
@@ -84,7 +84,7 @@ const SocialIcons = () => {
   const dropShadow = `rounded-full duration-200 shadow-none hover:shadow-[0_7px_10px_3px_rgba(0,0,0,0.15)]`;
 
   return (
-    <div className={'z-10 pt-5 pb-[2vh]'}>
+    <footer className={'z-10 pt-5 pb-[2vh]'}>
       <div className={`flex gap-x-4 items-center justify-center pb-[10px] sm:pb-[12px]`}>
         <SocialIcon className={dropShadow} target="_blank" url={githubUrl} bgColor="#1C2128" />
         <SocialIcon className={dropShadow} target="_blank" url={linkedInUrl} bgColor={'#0a66c2'} />
@@ -100,7 +100,7 @@ const SocialIcons = () => {
       >
         &#169; 2023 RUSHIL GUPTA
       </h2>
-    </div>
+    </footer>
   );
 };
 
