@@ -13,7 +13,7 @@ const description =
   "I'm Rushil Gupta, a student developer often known as a CS nerd, gym rat, and caffeine addict. Discover a side of me that cannot be found anywhere else!";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(altUrl),
+  metadataBase: new URL(baseUrl),
   title: {
     default: title,
     template: `%s - Rushil Gupta`
