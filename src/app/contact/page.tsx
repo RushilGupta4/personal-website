@@ -8,30 +8,10 @@ const capitalize = (name: string) => {
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
-const Input = ({
-  type = 'text',
-  name,
-  required,
-  textArea = false,
-  placeholder
-}: {
-  type?: string;
-  name: string;
-  required: boolean;
-  textArea?: boolean;
-  placeholder?: string;
-}) => {
+const Input = ({ type = 'text', name, required, placeholder }: { type?: string; name: string; required: boolean; placeholder?: string }) => {
   const baseClassName = `transition-all duration-200 group-hover:brightness-[1.3] focus:group-hover:brightness-100 w-full outline-none text-slate-200 bg-slate-800 text-[0.95em]`;
   const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState('');
-
-  if (textArea) {
-    return (
-      <div className="group w-full">
-        <textarea name={name} required={required} placeholder={placeholder} className={`py-4 px-4 ${baseClassName} rounded-md`} />
-      </div>
-    );
-  }
 
   return (
     <div className="group relative w-full">
@@ -87,7 +67,13 @@ export default function ContactPage() {
       <form onSubmit={handleSubmit} className={`flex flex-col mx-auto mt-4 gap-y-4`}>
         <Input type={`text`} name={`name`} required />
         <Input type={`email`} name={`email`} required />
-        <Input name={`message`} placeholder={`Mesage ...`} textArea required />
+        <div className="group w-full">
+          <textarea
+            name={`message`}
+            placeholder={`Message ...`}
+            className={`py-4 px-4 transition-all duration-200 group-hover:brightness-[1.3] focus:group-hover:brightness-100 w-full outline-none text-slate-200 bg-slate-800 text-[0.95em] rounded-md`}
+          />
+        </div>
 
         <button type="submit" className={`mt-2 mx-auto w-full sm:w-5/6 md:w-2/3 lg:w-1/3 py-2 rounded-md bg-slate-800 text-white`}>
           Submit
