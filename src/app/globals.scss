@@ -2,49 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@for $i from 1 through 2 {
-  .about-me span:nth-child(#{$i}) {
-    $url: '/img/brush-stroke-red.webp';
-    @if $i % 2 == 1 {
-      $url: '/img/brush-stroke-red.webp';
-    }
-    @if $i % 2 == 0 {
-      $url: '/img/brush-stroke-blue.webp';
-    }
-
-    background-image: url($url);
-    background-repeat: no-repeat;
-
-    animation: highlight 0.85s normal forwards ease-in;
-    animation-iteration-count: 1;
-    animation-delay: (1.15 * ($i - 1) + 0.5) + s !important;
-
-    $offset: -5%;
-    $initSize: 4%;
-
-    background-position: $offset 100%;
-    background-size: $initSize 100%;
-
-    @keyframes highlight {
-      0% {
-        background-position: $offset 100%;
-        background-size: $initSize 100%;
-      }
-      100% {
-        background-position: 0% 100%;
-        background-size: 100% 100%;
-      }
-    }
-  }
-}
-
 .link-underline {
   border-bottom-width: 0;
   background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
   background-size: 0 2px;
   background-position: 50% 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.2s ease-in-out;
 }
 
 .link-underline:hover {
@@ -52,7 +15,7 @@
 }
 
 .link-underline-blue {
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#1c95e7, #1c95e7);
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#1656bc, #1656bc);
   background-position: 0% 100%;
 
   :hover {
@@ -62,7 +25,7 @@
 }
 
 .base-heading {
-  color: #1b2236;
+  color: #f7f8fb;
   font-weight: 700;
   text-align: center;
 }
@@ -74,56 +37,4 @@
 .typing-cursor {
   font-size: 0px;
   text-shadow: none;
-}
-
-@for $i from 1 through 15 {
-  .emojiWrapper p:nth-child(#{$i}) {
-    animation: animate#{$i} ((random(1500) / 100 + 10) + s) linear infinite;
-    animation-delay: ((random(1500) / 100) - 5) + s !important;
-    z-index: -1 !important;
-    position: absolute;
-    bottom: 10vh;
-
-    $max: 30;
-    $lower: 13;
-    $upper: 19;
-    $baseY: random(10);
-    $finalY: random($max - $upper);
-
-    @media (max-width: 768px) {
-      @if $i > 5 {
-        animation: none;
-      }
-    }
-
-    @media (min-width: 768px) {
-      $max: 26;
-      $lower: 10;
-      $upper: 20;
-      animation-duration: ((random(1500) / 100) + 25) + s;
-      animation-delay: ((random(2500) / 100) - 5) + s !important;
-      font-size: (4 * (random(8) + 10)) + px;
-    }
-
-    @if $baseY > 5 {
-      $baseY: random($max - $upper);
-    } @else {
-      $baseY: random($max - $upper) + $upper;
-    }
-
-    @if $baseY <= $lower {
-      $finalY: $finalY + $upper;
-    }
-
-    @keyframes animate#{$i} {
-      0% {
-        transform: translateX(115vw) translateY($baseY + vh) rotate((random(720) - 360) + deg);
-        bottom: 0;
-      }
-      100% {
-        transform: translateX(-15vw) translateY($finalY + vh) rotate((random(720) - 360) + deg);
-        bottom: 0;
-      }
-    }
-  }
 }

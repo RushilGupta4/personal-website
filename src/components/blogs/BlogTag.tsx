@@ -7,10 +7,7 @@ const robotoMono = Roboto_Mono({
 
 const BlogTag = ({ tag }: { tag: string }) => {
   return (
-    <p
-      key={tag}
-      className={`${robotoMono.className} text-[13px] md:text-[15px] tag-${tag} px-[10px] py-[3px] mt-[2px] rounded-[3px] sm:rounded-[3.5px]`}
-    >
+    <p key={tag} className={`${robotoMono.className} text-[13px] md:text-[15px] tag-${tag} px-[10px] mt-[2px] rounded-[3px] sm:rounded-[3.5px]`}>
       {tag}
     </p>
   );
