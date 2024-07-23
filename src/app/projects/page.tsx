@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const ProjectsPage = async () => {
   if (projectsData.length < 1) {
     return (
-      <div className={`w-full h-1/2 mx-auto text-center my-auto mt-[20vh] text-slate-800 text-5xl md:text-6xl lg:text-7xl font-[600]`}>
+      <div className={`w-full h-1/2 mx-auto text-center my-auto mt-[20vh] text-slate-100 text-5xl md:text-6xl lg:text-7xl font-[600]`}>
         COMING SOON
       </div>
     );

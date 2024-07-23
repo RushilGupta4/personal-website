@@ -21,32 +21,28 @@ export default async function Home() {
   };
 
   return (
-    <section className={`flex-none lg:flex pt-2 lg:pt-8`}>
+    <section className={`flex flex-col pt-2 md:pt-4 xl:pt-8 2xl:pt-12`}>
       <SchemaData data={jsonLd} />
       {/* Profile Pic */}
-      <div
-        className={`mx-auto w-[60%] min-[540px]:w-[55%] sm:w-[45%] min-[700px]:w-[42%] md:w-[38%] min-[920px]:w-[35%] lg:w-[30%] min-[1120px]:w-[27.5%]`}
-      >
+      <div className={`mx-auto max-w-[30ch] md:max-w-[35ch] 3xl:max-w-[45ch] 4xl:max-w-[60ch]`}>
         <Image
           src={profilePic}
-          width={512}
-          height={512}
+          width={1024}
+          height={1024}
           alt="Picture of me"
-          className={`mx-auto border-[6px] sm:border-8 border-slate-300 rounded-full`}
+          className={`mx-auto border-4 sm:border-6 border-slate-100 rounded-full`}
           placeholder="blur"
           priority
         />
       </div>
 
       {/* About Me */}
-      <div className={`mx-auto my-0 lg:my-auto w-full lg:w-[70%] min-[1600px]:w-[80%] pt-2 lg:pt-4 pb-0 lg:pb-24 pl-0 lg:pl-8`}>
-        <h1
-          className={`base-heading underline decoration-[2px] sm:decoration-[3px] underline-offset-[8px] sm:underline-offset-[12px] text-4xl sm:text-p[40px] md:text-5xl lg:text-6xl`}
-        >
+      <div className={`mx-auto my-0 lg:my-auto w-full pt-4 md:pt-6 2xl:pt-8`}>
+        <h1 className={`base-heading decoration-1 sm:decoration-2 underline-offset-2 sm:underline-offset-8 text-4xl 3xl:text-4xl 4xl:text-5xl`}>
           Hi, I&apos;m Rushil
         </h1>
-        <div className={`pt-3 sm:pt-4 md:pt-5 lg:pt-8 font-light lg:font-[225] text-center lg:text-left px-1 lg:px-8`}>
-          <article className="about-me prose prose-base md:prose-lg lg:prose-xl min-[1120px]:prose-p:text-[22px] prose-slate prose-a:no-underline">
+        <div className={`pt-2 2xl:pt-6 font-light text-center lg:text-left px-2 md:px-4 lg:px-8 2xl:px-12 4xl:px-12 mx-auto`}>
+          <article className="prose prose-invert prose-base md:prose-md lg:prose-lg 2xl:prose-2xl prose-slate prose-a:no-underline prose-p:text-center mx-auto">
             {content}
           </article>
         </div>

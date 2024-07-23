@@ -11,7 +11,7 @@ const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
 
   return (
     <div>
-      <h1 className={`!my-0 pb-1 md:pb-[6px] border-b-2 border-slate-700`}>{frontmatter.title}</h1>
+      <h1 className={`!my-0 pb-1 md:pb-[6px] text-slate-200 border-b-2 border-slate-200`}>{frontmatter.title}</h1>
 
       <div className={`flex flex-col md:flex-row h-max mt-6 md:mt-2`}>
         {/* Author Info */}
@@ -20,8 +20,8 @@ const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
             <Image src={profilePic} width={512} height={512} className={`rounded-full !my-0 !py-0`} alt={frontmatter.author} />
           </div>
           <div className={`my-auto w-full pl-2 sm:pl-3 md:pl-4`}>
-            <p className={`${pClassName} text-[1em] text-slate-800 font-medium`}>{frontmatter.author}</p>
-            <p className={`${pClassName} text-[.9em] text-slate-500 font-light`}>{`${blogDateString} • ${frontmatter.readTime}`}</p>
+            <p className={`${pClassName} text-[1em] text-slate-300 font-medium`}>{frontmatter.author}</p>
+            <p className={`${pClassName} text-[.9em] text-slate-300 font-light`}>{`${blogDateString} • ${frontmatter.readTime}`}</p>
           </div>
         </div>
 
