@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import BasePage from '@/components/base/BasePage';
 import projectsData from '@/lib/projectsData';
 import ProjectPreview from '@/components/projects/ProjectPreview';
+import { cn } from '@/lib/cn';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -21,15 +22,17 @@ const ProjectsPage = async () => {
     );
   }
   return (
-    <div className={`mx-auto w-[95%] md:w-full`}>
-      <BasePage title={`Projects`} description={``}>
-        <div className={`mt-2 md:mt-4 grid grid-cols-1 sm:grid-cols-2 min-[1150px]:grid-cols-3 gap-4 sm:gap-5 mx-auto justify-center items-stretch`}>
-          {projectsData.map((project: any, index: number) => (
-            <ProjectPreview key={project.name} data={project} />
-          ))}
-        </div>
-      </BasePage>
-    </div>
+    <BasePage title={`Projects`} description={`Explore my portfolio of projects and see what I've been working on!`}>
+      <div
+        className={cn(
+          `mt-4 mb-8 2xl:mb-10 4xl:mb-12 md:mt-4 md:mb-10 mx-auto gap-6 md:gap-8 justify-center items-stretch grid grid-cols-1 md:grid-cols-2 4xl:grid-cols-3`
+        )}
+      >
+        {projectsData.map((project: any, index: number) => (
+          <ProjectPreview key={project.name} data={project} />
+        ))}
+      </div>
+    </BasePage>
   );
 };
 

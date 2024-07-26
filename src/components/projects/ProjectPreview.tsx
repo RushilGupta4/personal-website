@@ -5,8 +5,10 @@ const ProjectPreview = ({ data }: { data: any }): React.ReactNode => {
   const animation = `transition-all scale-100 hover:scale-[1.01] duration-200 shadow-[0_2px_4px_1px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_9px_3px_rgba(0,0,0,0.15)]`;
 
   return (
-    <div className={`m-auto flex flex-col justify-between border border-slate-300 text-left rounded-md h-full ${animation}`}>
-      <div className={`p-4 lg:p-5`}>
+    <div
+      className={`bg-white bg-opacity-[0.1] m-auto flex flex-col justify-between border border-slate-300 text-left rounded-lg h-full ${animation}`}
+    >
+      <div>
         <Image
           src={data.image}
           alt={data.imageAlt}
@@ -14,12 +16,13 @@ const ProjectPreview = ({ data }: { data: any }): React.ReactNode => {
           width={0}
           height={0}
           style={{ width: '100%', height: 'auto' }}
-          className={`mx-auto rounded border-[0.5px]`}
+          className={`mx-auto rounded-t-lg border-[0.5px]`}
         />
-        <h2 className={`mt-6 mb-4 text-[21px] md:text-[23px] lg:text-[25px] text-slate-800 font-bold leading-tight`}>{data.name}</h2>
-        <p className={`text-slate-500 text-[16px] md:text-[18px] font-normal`}>{data.description}</p>
+        <div className={`p-4 mb-4`}>
+          <h2 className={`mb-2 text-xl md:text-2xl 2xl:text-3xl text-slate-200 font-bold leading-tight`}>{data.name}</h2>
+          <p className={`text-slate-300 text-base md:text-lg 2xl:text-xl font-normal`}>{data.description}</p>
+        </div>
       </div>
-
       <SocialIcon
         url={data.link}
         target={'_blank'}
