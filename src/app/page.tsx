@@ -21,7 +21,7 @@ export default async function Home() {
   };
 
   return (
-    <section className={`flex flex-col pt-2 md:pt-4 lg:pt-8 xl:pt-10 2xl:pt-14`}>
+    <section className={`flex flex-col pt-4 md:pt-8 lg:pt-12 xl:pt-16 2xl:pt-24`}>
       <SchemaData data={jsonLd} />
       {/* Profile Pic */}
       <div className={`mx-auto max-w-[30ch] md:max-w-[35ch] 3xl:max-w-[45ch] 4xl:max-w-[60ch]`}>

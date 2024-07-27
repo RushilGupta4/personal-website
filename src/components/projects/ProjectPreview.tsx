@@ -17,6 +17,8 @@ const ProjectPreview = ({ data }: { data: any }): React.ReactNode => {
           height={0}
           style={{ width: '100%', height: 'auto' }}
           className={`mx-auto rounded-t-lg border-[0.5px]`}
+          placeholder="blur"
+          priority
         />
         <div className={`p-4 mb-4`}>
           <h2 className={`mb-2 text-xl md:text-2xl 2xl:text-3xl text-slate-200 font-bold leading-tight`}>{data.name}</h2>

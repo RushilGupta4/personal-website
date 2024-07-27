@@ -2,7 +2,7 @@ import './globals.scss';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { baseUrl } from '@/lib/constants';
-import { poppins, workSans, roboto } from '@/lib/fonts';
+import { roboto } from '@/lib/fonts';
 import type { Metadata } from 'next';
 import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,15 +44,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`h-full`}>
-      <body
-        className={`${roboto.className} bg-[#000000] sm:bg-[#19191c] h-full text-white mx-auto overflow-x-hidden flex flex-col justify-between max-w-[90ch] 3xl:max-w-[110ch] 4xl:max-w-[170ch]`}
-      >
-        <div>
+    <html lang="en" className={`h-full bg-[#000000] sm:bg-[#19191c]`}>
+      <body className={`${roboto.className} h-full text-white mx-auto overflow-x-hidden flex flex-col justify-between`}>
+        <div className="max-w-[90ch] 3xl:max-w-[110ch] 4xl:max-w-[170ch] mx-auto">
           <NavBar />
-          <div className="mx-8">
-            <div className="mx-auto">{children}</div>
-          </div>
+          <div className="mx-8">{children}</div>
         </div>
         <Footer />
         <Analytics />
