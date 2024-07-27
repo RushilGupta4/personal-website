@@ -12,7 +12,6 @@ const ShowBlogs = ({ blogsMetaData }: { blogsMetaData: any }) => {
   return (
     <div>
       <SearchBar
-        className={`mt-4 mb-8 2xl:mb-10 4xl:mb-12 md:mt-4 md:mb-10 mx-auto`}
         searchQuery={searchQuery}
         onChange={(val: string) => {
           setSearchQuery(val);

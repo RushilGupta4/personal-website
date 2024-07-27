@@ -2,7 +2,6 @@ import NavLink from '@/components/NavLink';
 
 const ROUTES: any = [
   { name: 'Home', path: '/', exact: true },
-  // { name: "About", path: "/about" },
   { name: 'Blogs', path: '/blogs' },
   { name: 'Projects', path: '/projects' }
 ];
