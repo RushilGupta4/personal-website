@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://www.rushilgupta.tech/sitemap.xml
+Sitemap: https://www.rushilgupta.in/sitemap.xml
