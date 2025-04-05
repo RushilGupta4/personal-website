@@ -2,39 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-.link-underline {
-  border-bottom-width: 0;
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#ffffff, #ffffff);
-  background-size: 0 2px;
-  background-position: 50% 100%;
-  background-repeat: no-repeat;
-}
+@layer base {
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 
-.link-underline:hover {
-  background-size: 100% 2px;
-}
-
-.link-underline-blue {
-  background-image: linear-gradient(transparent, transparent), linear-gradient(#1656bc, #1656bc);
-  background-position: 0% 100%;
-
-  :hover {
-    background-size: 100% 2px;
-    background-position: 50% 100%;
+  /* Better text rendering */
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-.base-heading {
-  color: #f7f8fb;
-  font-weight: 700;
-  text-align: center;
+@layer components {
+  /* Link styles with improved animations */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+
+  .link-underline-blue {
+    position: relative;
+
+    &::after {
+      background-color: #38bdf8;
+    }
+
+    &:hover {
+      color: #38bdf8;
+    }
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-background-paper rounded-lg shadow-md transition-all duration-300 hover:shadow-lg border border-border-light;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium;
+  }
+
+  .btn-primary {
+    @apply bg-primary-main text-white hover:bg-primary-dark;
+  }
+
+  .btn-outline {
+    @apply border border-border-main text-text-primary hover:bg-background-paper;
+  }
+
+  /* Typography styles */
+  .base-heading {
+    @apply text-text-primary font-bold text-center;
+    letter-spacing: -0.025em;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-blue-400;
+  }
 }
 
-.text-shadow {
-  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.3);
+@layer utilities {
+  /* Effect styles */
+  .text-shadow {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+
+  .typing-cursor {
+    font-size: 0px;
+    text-shadow: none;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-opacity-20 backdrop-blur-lg backdrop-filter border border-white border-opacity-20;
+  }
 }
 
-.typing-cursor {
-  font-size: 0px;
-  text-shadow: none;
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

@@ -1,27 +1,25 @@
 'use client';
 
-import { cn } from '@/lib/cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
-interface Props {
+interface NavLinkProps {
   to: string;
-  exact?: Boolean;
-  activeClassName?: string;
+  exact?: boolean;
+  children: React.ReactNode;
   className?: string;
-  props?: {
-    [key: string]: any;
-  };
-  children: ReactNode;
+  activeClassName?: string;
+  onClick?: () => void;
 }
 
-const NavLink: React.FC<Props> = ({ to, exact, children, className, activeClassName, ...props }) => {
-  const pathname = usePathname()!;
+const NavLink = ({ to, exact = false, children, className = '', activeClassName = '', onClick }: NavLinkProps): JSX.Element => {
+  const pathname = usePathname();
   const isActive = exact ? pathname === to : pathname.startsWith(to);
+  const combinedClassName = cn(className, isActive && activeClassName);
 
   return (
-    <Link href={to} className={cn(className, isActive && activeClassName)} {...props}>
+    <Link href={to} className={combinedClassName} onClick={onClick}>
       {children}
     </Link>
   );
