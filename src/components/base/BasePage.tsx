@@ -1,17 +1,49 @@
-export default function BasePage({ title, description = '', children }: { title: string; description?: string; children: any }) {
+import { Metadata } from 'next';
+import { baseUrl } from '@/lib/constants';
+import SchemaData from '@/components/SchemaData';
+
+interface BasePageProps {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+  jsonLd?: Record<string, any>;
+}
+
+export function generateMetadata(title: string, description: string): Metadata {
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: baseUrl
+    }
+  };
+}
+
+const BasePage = ({ title, description, children, jsonLd }: BasePageProps): JSX.Element => {
   return (
-    <div id={title} className="w-full pt-2 md:pt-4 lg:pt-8 pb-8 md:pb-12">
-      <div className={'mb-4 md:mb-6'}>
-        <h1 className={'pt-2 base-heading text-4xl sm:text-5xl md:text-6xl lg:text-6xl'}>{title}</h1>
-        {description && (
-          <p
-            className={`text-center pt-1 md:pt-2 lg:pt-3 2xl:pt-4 4xl:pt-4 mx-auto text-slate-300 font-[450] sm:font-normal text-base md:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl`}
-          >
-            {description}
-          </p>
-        )}
+    <div className="min-h-screen">
+      {jsonLd && <SchemaData data={jsonLd} />}
+
+      <div className="py-8 md:py-12">
+        <div className="mb-8 md:mb-12 animate-fade-in">
+          {/* Header */}
+          <div className="mb-6 md:mb-10">
+            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-primary-light">{title}</span>
+            </h1>
+
+            {description && (
+              <p className="text-center mt-6 mx-auto max-w-3xl text-text-secondary font-normal text-base md:text-lg opacity-90">{description}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="animate-slide-up">{children}</div>
       </div>
-      {children}
     </div>
   );
-}
+};
+
+export default BasePage;

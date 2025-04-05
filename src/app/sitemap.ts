@@ -7,29 +7,35 @@ export default async function sitemap() {
   const blogsUrls =
     blogs?.map(post => ({
       url: `${baseUrl}/blogs/${post.slug}`,
-      lastModified: new Date()
+      lastModified: post.updatedDate || post.publishDate || new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8
     })) ?? [];
 
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0
     },
     {
       url: `${baseUrl}/blogs`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date()
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9
     },
     {
       url: `${baseUrl}/resume.pdf`,
-      lastModified: new Date()
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7
     },
     ...blogsUrls
   ];

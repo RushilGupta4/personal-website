@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: any }) {
   return {
     title: meta.title,
     description: meta.description,
+    keywords: meta.keywords || 'Rushil Gupta, blog, technology, programming, computer science',
     alternates: {
       canonical: `/blogs/${params.slug}`
     },
@@ -25,7 +26,23 @@ export async function generateMetadata({ params }: { params: any }) {
       title: meta.title,
       description: meta.description,
       url: `${baseUrl}/blogs/${params.slug}`,
-      type: 'website'
+      type: 'article',
+      publishedTime: meta.publishDate,
+      authors: ['Rushil Gupta'],
+      images: [
+        {
+          url: meta.image || `${baseUrl}/img/opengraph-image.png`,
+          width: 1200,
+          height: 630,
+          alt: meta.title
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.description,
+      images: [meta.image || `${baseUrl}/img/opengraph-image.png`]
     }
   };
 }
@@ -35,7 +52,6 @@ const Page = async ({ params }: { params: any }) => {
 
   const jsonLd = {
     '@type': 'BlogPosting',
-    name: 'Rushil Gupta',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${baseUrl}/blogs/${params.slug}`
@@ -45,12 +61,22 @@ const Page = async ({ params }: { params: any }) => {
       name: 'Rushil Gupta',
       url: baseUrl
     },
-    description: meta.description,
+    publisher: {
+      '@type': 'Person',
+      name: 'Rushil Gupta',
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/img/favicon.png`
+      }
+    },
     headline: meta.title,
-    datePublished: new Date(meta.publishDate),
+    description: meta.description,
+    datePublished: new Date(meta.publishDate).toISOString(),
+    dateModified: meta.updatedDate ? new Date(meta.updatedDate).toISOString() : new Date(meta.publishDate).toISOString(),
+    image: meta.image || `${baseUrl}/img/opengraph-image.png`,
     url: `/blogs/${params.slug}`,
-    keywords: meta.keywords,
-    image: meta.image
+    keywords: meta.keywords
   };
 
   if (!content) {

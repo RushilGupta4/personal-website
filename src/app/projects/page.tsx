@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import BasePage from '@/components/base/BasePage';
 import projectsData from '@/lib/projectsData';
 import ProjectPreview from '@/components/projects/ProjectPreview';
-import { cn } from '@/lib/cn';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Projects',

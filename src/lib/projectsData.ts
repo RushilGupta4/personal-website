@@ -1,4 +1,4 @@
-import { githubUrl } from './constants';
+import { socialLinks } from './constants';
 import rslImage from '@/static/projects/rsl.png';
 
 const projectsData: any = [
