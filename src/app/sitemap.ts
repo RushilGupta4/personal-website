@@ -1,6 +1,6 @@
 import { toISODate } from '@/lib/utils';
 import type { MetadataRoute } from 'next';
-import { baseUrl } from '@/lib/constants';
+import { absoluteUrl } from '@/lib/constants';
 import { getAllPostsMeta } from '@/lib/mdx';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -8,37 +8,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await getAllPostsMeta('blogs');
   const blogsUrls =
     blogs?.map(post => ({
-      url: `${baseUrl}/blogs/${post.slug}`,
-      lastModified: toISODate(post.updatedDate || post.publishDate),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8
+      url: absoluteUrl(`/blogs/${post.slug}`),
+      lastModified: toISODate(post.updatedDate || post.publishDate)
     })) ?? [];
 
   return [
     {
-      url: `${baseUrl}/`,
-      changeFrequency: 'weekly',
-      priority: 1.0
+      url: absoluteUrl()
     },
     {
-      url: `${baseUrl}/blogs`,
-      changeFrequency: 'weekly',
-      priority: 0.9
+      url: absoluteUrl('/blogs')
     },
     {
-      url: `${baseUrl}/publications`,
-      changeFrequency: 'weekly',
-      priority: 0.9
+      url: absoluteUrl('/publications')
     },
     {
-      url: `${baseUrl}/teaching`,
-      changeFrequency: 'weekly',
-      priority: 0.9
+      url: absoluteUrl('/teaching')
     },
     {
-      url: `${baseUrl}/resume.pdf`,
-      changeFrequency: 'monthly',
-      priority: 0.7
+      url: absoluteUrl('/resume.pdf')
     },
     ...blogsUrls
   ];

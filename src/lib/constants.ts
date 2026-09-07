@@ -6,9 +6,16 @@
 
 // Site URLs
 export const baseUrl = 'https://rushilgupta.in';
-export const personId = `${baseUrl}/#person`;
+/** The normalized absolute root URL used in canonical URLs and JSON-LD. */
+export const siteUrl = new URL(baseUrl).href;
+export const siteId = `${siteUrl}#website`;
+export const personId = `${siteUrl}#person`;
 export const siteTitle = 'Rushil Gupta | CS @ Ashoka University';
 export const siteDescription = 'Rushil Gupta is a computer science student at Ashoka University interested in machine learning, optimisation, and applied probability.';
+
+export function absoluteUrl(path = '/'): string {
+  return new URL(path, siteUrl).href;
+}
 
 // Social media links
 export const socialLinks = {

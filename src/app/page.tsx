@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { getPostBySlug } from '@/lib/mdx';
 import landingPic from '@/../public/img/landing.webp';
 import SchemaData from '@/components/SchemaData';
-import { socialLinks, baseUrl, personId, siteTitle, siteDescription } from '@/lib/constants';
+import { socialLinks, absoluteUrl, personId, siteId, siteTitle, siteDescription, siteUrl } from '@/lib/constants';
 import Link from 'next/link';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGooglescholar } from 'react-icons/si';
@@ -14,20 +14,30 @@ export const metadata = createPageMetadata({ title: siteTitle, description: site
 export default async function Home(): Promise<React.JSX.Element> {
   const { content } = await getPostBySlug('about-me', '');
 
+  const websiteSchema = {
+    '@type': 'WebSite',
+    '@id': siteId,
+    url: siteUrl,
+    name: siteTitle,
+    description: siteDescription,
+    inLanguage: 'en'
+  };
+
   const personSchema = {
     '@type': 'Person',
     '@id': personId,
     name: 'Rushil Gupta',
-    url: baseUrl,
+    url: siteUrl,
+    description: siteDescription,
     jobTitle: 'Computer Science Student',
     affiliation: { '@type': 'CollegeOrUniversity', name: 'Ashoka University' },
-    image: `${baseUrl}/img/profile_pic.webp`,
+    image: absoluteUrl('/img/profile_pic.webp'),
     sameAs: [socialLinks.scholar, socialLinks.github, socialLinks.linkedin]
   };
 
   return (
     <main>
-      <SchemaData data={personSchema} />
+      <SchemaData data={{ '@graph': [websiteSchema, personSchema] }} />
 
       {/* Hero Section */}
       <section className="min-h-[80vh] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12 py-10 md:py-20">
