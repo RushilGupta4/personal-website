@@ -1,17 +1,15 @@
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/metadata';
 import BasePage from '@/components/base/BasePage';
 import PublicationEntry from '@/components/publications/PublicationEntry';
 import SchemaData from '@/components/SchemaData';
-import publications from '@/lib/publicationsData';
-import { baseUrl } from '@/lib/constants';
+import publications, { AUTHOR_NAME } from '@/lib/publicationsData';
+import { baseUrl, personId } from '@/lib/constants';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Publications',
   description: 'Research papers and preprints I have contributed to, spanning machine learning, optimisation and applied probability.',
-  alternates: {
-    canonical: `/publications`
-  }
-};
+  path: '/publications'
+});
 
 const PublicationsPage = () => {
   const sorted = [...publications].sort((a, b) => b.year - a.year || b.month - a.month);
@@ -20,10 +18,8 @@ const PublicationsPage = () => {
     '@type': 'ScholarlyArticle',
     headline: publication.title,
     name: publication.title,
-    author: publication.authors.map(author => ({ '@type': 'Person', name: author })),
-    datePublished: `${publication.year}-${String(publication.month).padStart(2, '0')}`,
+    author: publication.authors.map(author => ({ '@type': 'Person', name: author, ...(author === AUTHOR_NAME ? { '@id': personId } : {}) })),
     description: publication.description,
-    publisher: { '@type': 'Organization', name: publication.venue.name },
     url: publication.links[0].url,
     mainEntityOfPage: `${baseUrl}/publications`
   }));

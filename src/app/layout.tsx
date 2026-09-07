@@ -1,7 +1,7 @@
 import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { baseUrl } from '@/lib/constants';
+import { baseUrl, siteTitle, siteDescription } from '@/lib/constants';
 import { roboto } from '@/lib/fonts';
 import { DEFAULT_THEME, THEMES, THEME_ATTRIBUTE, THEME_STORAGE_KEY, palettes, themeVarsCss } from '@/lib/theme';
 import type { Metadata, Viewport } from 'next';
@@ -9,8 +9,8 @@ import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 // Define site metadata
-const SITE_TITLE = 'Rushil Gupta | CS @ Ashoka University';
-const SITE_DESCRIPTION = "I'm Rushil Gupta";
+const SITE_TITLE = siteTitle;
+const SITE_DESCRIPTION = siteDescription;
 const KEYWORDS =
   'Rushil Gupta, ML research, Applied Probability, Cryptography, software developer, computer science, Ashoka University, web development, portfolio, coding, programming';
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     apple: '/img/favicon.png'
   },
   verification: {
-    google: 'google-site-verification=RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
+    google: 'RW0waHcddtR83YbWH-GpTiqu8St-MYP9BruKFWPcAyo'
   },
   robots: {
     index: true,
@@ -49,9 +49,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION
-  },
-  alternates: {
-    canonical: '/'
   },
   authors: [{ name: 'Rushil Gupta', url: baseUrl }]
 };

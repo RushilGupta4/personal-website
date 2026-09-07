@@ -1,15 +1,13 @@
-import { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/metadata';
 import BasePage from '@/components/base/BasePage';
 import TeachingEntry from '@/components/teaching/TeachingEntry';
 import teaching, { SEASON_ORDER } from '@/lib/teachingData';
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: 'Teaching',
   description: 'Courses I have been a teaching assistant for, along with resources and lectures I gave.',
-  alternates: {
-    canonical: `/teaching`
-  }
-};
+  path: '/teaching'
+});
 
 const TeachingPage = () => {
   const sorted = [...teaching].sort((a, b) => b.termYear - a.termYear || SEASON_ORDER[b.termSeason] - SEASON_ORDER[a.termSeason]);
@@ -17,7 +15,7 @@ const TeachingPage = () => {
   return (
     <BasePage
       title={`Teaching`}
-      description={`These are the courses I have been a teaching assistant for. Where I gave a lecture, I have attached the resources and slides.`}
+      description={`These are the courses I have been a teaching assistant for. I was fortunate to give some lectures too!`}
     >
       <div className="mx-auto">
         {sorted.map(course => (

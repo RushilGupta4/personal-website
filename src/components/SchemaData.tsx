@@ -1,55 +1,16 @@
-import Script from 'next/script';
 import { baseUrl } from '@/lib/constants';
 
-interface SchemaDataProps {
-  data: Record<string, any> | Record<string, any>[];
+type SchemaItem = Record<string, unknown>;
+
+function processSchemaItem(item: SchemaItem): SchemaItem {
+  return {
+    '@context': 'https://schema.org',
+    ...item,
+    ...(typeof item.url === 'string' ? { url: new URL(item.url, baseUrl).href } : {})
+  };
 }
 
-const SchemaData = ({ data }: SchemaDataProps): React.JSX.Element => {
-  // Handle array of schema objects
-  if (Array.isArray(data)) {
-    const schemaArray = data.map(item => processSchemaItem(item));
-
-    return (
-      <Script
-        id="schema-org"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schemaArray)
-        }}
-      />
-    );
-  }
-
-  // Handle single schema object
-  const processedData = processSchemaItem(data);
-
-  return (
-    <Script
-      id="schema-org"
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(processedData)
-      }}
-    />
-  );
-};
-
-// Helper function to process schema items
-function processSchemaItem(item: Record<string, any>): Record<string, any> {
-  const processedItem = { ...item };
-
-  // Add context if not present
-  if (!processedItem['@context']) {
-    processedItem['@context'] = 'https://schema.org';
-  }
-
-  // Process URL
-  if (processedItem.url && !processedItem.url.startsWith('http')) {
-    processedItem.url = processedItem.url.startsWith('/') ? `${baseUrl}${processedItem.url}` : `${baseUrl}/${processedItem.url}`;
-  }
-
-  return processedItem;
+export default function SchemaData({ data }: { data: SchemaItem | SchemaItem[] }) {
+  const schema = Array.isArray(data) ? data.map(processSchemaItem) : processSchemaItem(data);
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />;
 }
-
-export default SchemaData;

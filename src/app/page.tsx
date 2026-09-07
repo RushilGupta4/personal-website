@@ -1,35 +1,27 @@
+import { createPageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import { getPostBySlug } from '@/lib/mdx';
 import landingPic from '@/../public/img/landing.webp';
 import SchemaData from '@/components/SchemaData';
-import { socialLinks, baseUrl } from '@/lib/constants';
+import { socialLinks, baseUrl, personId, siteTitle, siteDescription } from '@/lib/constants';
 import Link from 'next/link';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiGooglescholar } from 'react-icons/si';
 import { MdOutlineContactPage } from 'react-icons/md';
 
-interface PersonSchema {
-  '@type': string;
-  name: string;
-  jobTitle: string;
-  sameAs: string[];
-  email: string;
-  affiliation: {
-    '@type': string;
-    name: string;
-    url: string;
-  };
-}
+export const metadata = createPageMetadata({ title: siteTitle, description: siteDescription, path: '/' });
 
 export default async function Home(): Promise<React.JSX.Element> {
   const { content } = await getPostBySlug('about-me', '');
 
   const personSchema = {
     '@type': 'Person',
+    '@id': personId,
     name: 'Rushil Gupta',
     url: baseUrl,
     jobTitle: 'Computer Science Student',
-    alumniOf: 'Ashoka University',
+    affiliation: { '@type': 'CollegeOrUniversity', name: 'Ashoka University' },
+    image: `${baseUrl}/img/profile_pic.webp`,
     sameAs: [socialLinks.scholar, socialLinks.github, socialLinks.linkedin]
   };
 
@@ -40,15 +32,15 @@ export default async function Home(): Promise<React.JSX.Element> {
       {/* Hero Section */}
       <section className="min-h-[80vh] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12 py-10 md:py-20">
         {/* Profile Image */}
-        <div className="animate-fade-in w-full md:w-[55%] order-1 md:order-2">
-          <div className="mx-auto w-full max-w-[560px] lg:max-w-[680px]">
+        <div className="animate-fade-in w-full md:w-[51.975%] md:min-w-0 order-1 md:order-2">
+          <div className="mx-auto w-full max-w-[560px] md:max-w-[529.2px] lg:max-w-[642.6px]">
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-tr from-primary-main/10 to-accent-400/10 rounded-lg blur-lg -z-10"></div>
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <Image
                   src={landingPic}
                   alt="Rushil Gupta on the Embarcadero in San Francisco"
-                  sizes="(max-width: 768px) 92vw, (max-width: 1024px) 55vw, 680px"
+                  sizes="(min-width: 1024px) 642.6px, (min-width: 768px) 51.975vw, 92vw"
                   className="object-cover w-full aspect-[4/3] transition-all duration-500 hover:scale-[1.025]"
                   placeholder="blur"
                   priority
@@ -99,13 +91,13 @@ export default async function Home(): Promise<React.JSX.Element> {
         </div>
 
         {/* About Me Content */}
-        <div className="animate-slide-up w-full md:w-[45%] order-2 md:order-1 text-center md:text-left px-4 sm:px-0">
+        <div className="animate-slide-up w-full md:w-[48.025%] md:min-w-0 order-2 md:order-1 text-center md:text-left px-4 sm:px-0">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-accent-400">Rushil</span>
             </h1>
 
-            <div className="prose prose-lg md:prose-xl max-w-none">{content}</div>
+            <div className="prose prose-lg text-[1.0125rem] md:prose-xl md:text-[1.125rem] max-w-none">{content}</div>
 
             <div className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
               <Link

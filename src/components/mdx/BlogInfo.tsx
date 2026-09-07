@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import moment from 'moment';
+import { formatShortDate, toISODate } from '@/lib/utils';
 import BlogTag from '@/components/blogs/BlogTag';
 import profilePic from '@/../public/img/profile_pic.webp';
 
 const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
   const pClassName = '!my-0 leading-tight';
 
-  const blogDate = moment(frontmatter.publishDate, 'MMMM DD, YYYY');
-  const blogDateString = blogDate.format('DD MMM YYYY');
+  const blogDateString = formatShortDate(frontmatter.publishDate);
 
   return (
     <div>
@@ -21,7 +20,7 @@ const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
           </div>
           <div className={`my-auto w-full pl-2 sm:pl-3 md:pl-4`}>
             <p className={`${pClassName} text-[1em] text-text-body font-medium`}>{frontmatter.author}</p>
-            <p className={`${pClassName} text-[.9em] text-text-body font-light`}>{`${blogDateString} • ${frontmatter.readTime}`}</p>
+            <p className={`${pClassName} text-[.9em] text-text-body font-light`}><time dateTime={toISODate(frontmatter.publishDate)}>{blogDateString}</time>{` • ${frontmatter.readTime}`}</p>
           </div>
         </div>
 
