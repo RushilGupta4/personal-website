@@ -1,7 +1,7 @@
 import './globals.scss';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { baseUrl, siteTitle, siteDescription } from '@/lib/constants';
+import { baseUrl, siteTitle, siteDescription, siteUrl } from '@/lib/constants';
 import { roboto } from '@/lib/fonts';
 import { DEFAULT_THEME, THEMES, THEME_ATTRIBUTE, THEME_STORAGE_KEY, palettes, themeVarsCss } from '@/lib/theme';
 import type { Metadata, Viewport } from 'next';
@@ -15,7 +15,7 @@ const KEYWORDS =
   'Rushil Gupta, ML research, Applied Probability, Cryptography, software developer, computer science, Ashoka University, web development, portfolio, coding, programming';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(siteUrl),
   title: {
     default: SITE_TITLE,
     template: `%s - Rushil Gupta`
@@ -32,7 +32,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION
   },
-  authors: [{ name: 'Rushil Gupta', url: baseUrl }]
+  authors: [{ name: 'Rushil Gupta', url: siteUrl }]
 };
 
 export const viewport: Viewport = {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { baseUrl, siteTitle } from './constants';
+import { absoluteUrl, siteTitle } from './constants';
 
 interface PageMetadata {
   title: string;
@@ -14,14 +14,17 @@ export function createPageMetadata({ title, description, path, publishedTime, mo
   return {
     title: { absolute: fullTitle },
     description,
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      types: { 'application/rss+xml': absoluteUrl('/rss.xml') }
+    },
     openGraph: {
       title: fullTitle,
       description,
-      url: new URL(path, baseUrl).href,
+      url: absoluteUrl(path),
       siteName: 'Rushil Gupta',
       ...(publishedTime
-        ? { type: 'article' as const, publishedTime, modifiedTime, authors: [baseUrl] }
+        ? { type: 'article' as const, publishedTime, modifiedTime, authors: [absoluteUrl()] }
         : { type: 'website' as const })
     },
     twitter: { card: 'summary_large_image', title: fullTitle, description }
