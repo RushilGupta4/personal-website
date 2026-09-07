@@ -13,7 +13,7 @@ interface NavLinkProps {
   onClick?: () => void;
 }
 
-const NavLink = ({ to, exact = false, children, className = '', activeClassName = '', onClick }: NavLinkProps): JSX.Element => {
+const NavLink = ({ to, exact = false, children, className = '', activeClassName = '', onClick }: NavLinkProps): React.JSX.Element => {
   const pathname = usePathname();
   const isActive = exact ? pathname === to : pathname.startsWith(to);
   const combinedClassName = cn(className, isActive && activeClassName);

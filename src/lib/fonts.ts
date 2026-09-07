@@ -1,6 +1,4 @@
-import { Inter, Poppins, Work_Sans, Roboto } from 'next/font/google';
-
-export const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+import { Roboto } from 'next/font/google';
 
 export const roboto = Roboto({
   subsets: ['latin'],

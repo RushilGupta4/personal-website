@@ -1,3 +1,6 @@
+import { notFound } from 'next/navigation';
+import { cache } from 'react';
+import { toISODate } from './utils';
 import fs from 'fs';
 import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
@@ -18,7 +21,14 @@ export const getPostBySlug = async (slug: string, directory: string): Promise<{ 
 
   const { frontmatter, content } = await compileMDX({
     source: fileContent,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      // next-mdx-remote v5+ strips JSX expressions by default. Our MDX is authored
+      // in-repo (not user submitted) and relies on `<BlogInfo frontmatter={frontmatter} />`,
+      // so expressions stay enabled while dangerous calls remain blocked.
+      blockJS: false,
+      blockDangerousJS: true
+    },
     components: { BlogInfo }
   });
 
@@ -28,12 +38,21 @@ export const getPostBySlug = async (slug: string, directory: string): Promise<{ 
     }
   }
 
+  if (directory === 'blogs') {
+    for (const field of ['publishDate', 'updatedDate']) {
+      if (field === 'updatedDate' && frontmatter[field] === undefined) continue;
+      if (!toISODate(frontmatter[field] as string)) {
+        throw new Error(`Invalid ${field} in ${filePath}: expected YYYY-MM-DD or Month D, YYYY`);
+      }
+    }
+  }
+
   return { meta: { ...frontmatter, slug: realSlug }, content };
 };
 
 export const getAllPostsMeta = async (directory: string) => {
   const dir = path.join(rootDirectory, directory);
-  const files = fs.readdirSync(dir);
+  const files = fs.readdirSync(dir).filter(file => file.endsWith('.mdx'));
 
   let posts = [];
 
@@ -54,3 +73,10 @@ export const getAllPostsMeta = async (directory: string) => {
 
   return sortedPosts;
 };
+
+/** Share the same existence check between page, metadata, and social image. */
+export const getBlogPostOrNotFound = cache(async (slug: string) => {
+  const post = await getPostBySlug(slug, 'blogs');
+  if (!post.content) notFound();
+  return post;
+});

@@ -1,17 +1,16 @@
 import Image from 'next/image';
-import moment from 'moment';
+import { formatShortDate, toISODate } from '@/lib/utils';
 import BlogTag from '@/components/blogs/BlogTag';
 import profilePic from '@/../public/img/profile_pic.webp';
 
 const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
   const pClassName = '!my-0 leading-tight';
 
-  const blogDate = moment(frontmatter.publishDate, 'MMMM DD, YYYY');
-  const blogDateString = blogDate.format('DD MMM YYYY');
+  const blogDateString = formatShortDate(frontmatter.publishDate);
 
   return (
     <div>
-      <h1 className={`!my-0 pb-1 md:pb-[6px] text-slate-200 border-b-2 border-slate-200`}>{frontmatter.title}</h1>
+      <h1 className={`!my-0 pb-1 md:pb-[6px] text-text-heading border-b-2 border-text-heading`}>{frontmatter.title}</h1>
 
       <div className={`flex flex-col md:flex-row h-max mt-6 md:mt-2`}>
         {/* Author Info */}
@@ -20,8 +19,8 @@ const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
             <Image src={profilePic} width={512} height={512} className={`rounded-full !my-0 !py-0`} alt={frontmatter.author} />
           </div>
           <div className={`my-auto w-full pl-2 sm:pl-3 md:pl-4`}>
-            <p className={`${pClassName} text-[1em] text-slate-300 font-medium`}>{frontmatter.author}</p>
-            <p className={`${pClassName} text-[.9em] text-slate-300 font-light`}>{`${blogDateString} • ${frontmatter.readTime}`}</p>
+            <p className={`${pClassName} text-[1em] text-text-body font-medium`}>{frontmatter.author}</p>
+            <p className={`${pClassName} text-[.9em] text-text-body font-light`}><time dateTime={toISODate(frontmatter.publishDate)}>{blogDateString}</time>{` • ${frontmatter.readTime}`}</p>
           </div>
         </div>
 
