@@ -21,7 +21,7 @@ export function generateMetadata(title: string, description: string): Metadata {
   };
 }
 
-const BasePage = ({ title, description, children, jsonLd }: BasePageProps): JSX.Element => {
+const BasePage = ({ title, description, children, jsonLd }: BasePageProps): React.JSX.Element => {
   return (
     <div className="min-h-screen">
       {jsonLd && <SchemaData data={jsonLd} />}

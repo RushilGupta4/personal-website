@@ -1,14 +1,15 @@
+import type { MetadataRoute } from 'next';
 import { baseUrl } from '@/lib/constants';
 import { getAllPostsMeta } from '@/lib/mdx';
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all blogs
   const blogs = await getAllPostsMeta('blogs');
   const blogsUrls =
     blogs?.map(post => ({
       url: `${baseUrl}/blogs/${post.slug}`,
       lastModified: post.updatedDate || post.publishDate || new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.8
     })) ?? [];
 
@@ -26,7 +27,13 @@ export default async function sitemap() {
       priority: 0.9
     },
     {
-      url: `${baseUrl}/projects`,
+      url: `${baseUrl}/publications`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/teaching`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9

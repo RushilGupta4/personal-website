@@ -1,18 +1,18 @@
 import './globals.scss';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { baseUrl } from '@/lib/constants';
 import { roboto } from '@/lib/fonts';
-import { colors } from '@/lib/theme';
-import type { Metadata } from 'next';
+import { DEFAULT_THEME, THEMES, THEME_ATTRIBUTE, THEME_STORAGE_KEY, palettes, themeVarsCss } from '@/lib/theme';
+import type { Metadata, Viewport } from 'next';
 import NavBar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 // Define site metadata
 const SITE_TITLE = 'Rushil Gupta | CS @ Ashoka University';
-const SITE_DESCRIPTION =
-  "I'm Rushil Gupta, a student developer often known as a CS nerd, gym rat, and caffeine addict. Discover a side of me that cannot be found anywhere else!";
-const KEYWORDS = 'Rushil Gupta, software developer, computer science, Ashoka University, web development, portfolio, coding, programming';
+const SITE_DESCRIPTION = "I'm Rushil Gupta";
+const KEYWORDS =
+  'Rushil Gupta, ML research, Applied Probability, Cryptography, software developer, computer science, Ashoka University, web development, portfolio, coding, programming';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -43,21 +43,12 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: baseUrl,
     type: 'website',
-    siteName: 'Rushil Gupta',
-    images: [
-      {
-        url: `${baseUrl}/img/opengraph-image.png`,
-        width: 1200,
-        height: 630,
-        alt: 'Rushil Gupta'
-      }
-    ]
+    siteName: 'Rushil Gupta'
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [`${baseUrl}/img/opengraph-image.png`]
+    description: SITE_DESCRIPTION
   },
   alternates: {
     canonical: '/'
@@ -65,22 +56,32 @@ export const metadata: Metadata = {
   authors: [{ name: 'Rushil Gupta', url: baseUrl }]
 };
 
+export const viewport: Viewport = {
+  // Kept in sync with the active theme by the toggle.
+  themeColor: palettes[DEFAULT_THEME].background.dark
+};
+
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
-  // Using style prop for dynamic values from theme
-  const htmlStyle = {
-    '--bg-dark': colors.background.dark,
-    '--bg-light': colors.background.light,
-    '--text-primary': colors.text.primary
-  } as React.CSSProperties;
+/**
+ * Applies the stored theme while the browser parses the HTML, so a visitor who
+ * chose black and white never sees a flash of the dark palette.
+ */
+const themeInitScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(${JSON.stringify(
+  THEMES
+)}.indexOf(t)>-1)document.documentElement.setAttribute(${JSON.stringify(THEME_ATTRIBUTE)},t)}catch(e){}})()`;
 
+export default function RootLayout({ children }: RootLayoutProps): React.JSX.Element {
   return (
-    <html lang="en" style={htmlStyle} className="h-full bg-[var(--bg-dark)] sm:bg-[var(--bg-light)]">
-      <body className={`${roboto.className} h-full text-white mx-auto overflow-x-hidden flex flex-col justify-between`}>
-        <div className="max-w-[90ch] 3xl:max-w-[110ch] 4xl:max-w-[170ch] mx-auto">
+    <html lang="en" data-theme={DEFAULT_THEME} suppressHydrationWarning className="h-full bg-background-dark sm:bg-background-light">
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: themeVarsCss }} />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className={`${roboto.className} h-full text-text-primary mx-auto overflow-x-hidden flex flex-col justify-between`}>
+        <div className="max-w-[110ch] 3xl:max-w-[130ch] 4xl:max-w-[180ch] mx-auto">
           <NavBar />
           <div className="mx-8">{children}</div>
         </div>

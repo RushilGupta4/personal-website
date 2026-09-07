@@ -5,7 +5,7 @@ interface SchemaDataProps {
   data: Record<string, any> | Record<string, any>[];
 }
 
-const SchemaData = ({ data }: SchemaDataProps): JSX.Element => {
+const SchemaData = ({ data }: SchemaDataProps): React.JSX.Element => {
   // Handle array of schema objects
   if (Array.isArray(data)) {
     const schemaArray = data.map(item => processSchemaItem(item));

@@ -1,29 +1,42 @@
 import type { Config } from 'tailwindcss';
-import { colors, breakpoints } from './src/lib/theme';
+import { varColors, breakpoints } from './src/lib/theme';
 
+// Colours resolve through CSS variables so `data-theme` on <html> swaps them.
+// See src/lib/theme.ts for the palettes themselves.
 const config: Config = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
         // Primary colors
-        primary: colors.primary,
+        primary: varColors.primary,
 
         // Background colors
-        background: colors.background,
+        background: varColors.background,
+
+        // Accent colors (blue, deepened for contrast in the light theme)
+        accent: varColors.accent,
+
+        // Neutral colors
+        neutral: varColors.neutral,
 
         // Social media colors
-        social: colors.social,
+        social: varColors.social,
+
+        // Search input colors
+        input: varColors.input,
 
         // Text colors (flattened)
-        'text-primary': colors.text.primary,
-        'text-secondary': colors.text.secondary,
-        'text-disabled': colors.text.disabled,
-        'text-accent': colors.text.accent,
+        'text-primary': varColors.text.primary,
+        'text-secondary': varColors.text.secondary,
+        'text-disabled': varColors.text.disabled,
+        'text-accent': varColors.text.accent,
+        'text-heading': varColors.text.heading,
+        'text-body': varColors.text.body,
 
         // Border colors (flattened)
-        'border-light': colors.border.light,
-        'border-main': colors.border.main
+        'border-light': varColors.border.light,
+        'border-main': varColors.border.main
       },
       screens: {
         '3xl': breakpoints['3xl'],
@@ -50,19 +63,32 @@ const config: Config = {
         }
       },
       typography: {
+        // Drive `prose` off the same variables instead of `prose-invert`, so
+        // long-form content follows the active theme.
         DEFAULT: {
           css: {
-            color: colors.text.primary,
+            // Matches what `prose-invert` produced in the dark theme
+            '--tw-prose-body': 'rgb(var(--c-text-secondary))',
+            '--tw-prose-headings': 'rgb(var(--c-text-primary))',
+            '--tw-prose-lead': 'rgb(var(--c-text-secondary))',
+            '--tw-prose-links': 'rgb(var(--c-primary-main))',
+            '--tw-prose-bold': 'rgb(var(--c-text-primary))',
+            '--tw-prose-counters': 'rgb(var(--c-text-disabled))',
+            '--tw-prose-bullets': 'rgb(var(--c-text-disabled))',
+            '--tw-prose-hr': 'rgb(var(--c-border-light))',
+            '--tw-prose-quotes': 'rgb(var(--c-text-primary))',
+            '--tw-prose-quote-borders': 'rgb(var(--c-border-light))',
+            '--tw-prose-captions': 'rgb(var(--c-text-disabled))',
+            '--tw-prose-code': 'rgb(var(--c-text-primary))',
+            '--tw-prose-pre-code': 'rgb(var(--c-text-secondary))',
+            '--tw-prose-pre-bg': 'rgb(var(--c-bg-paper))',
+            '--tw-prose-th-borders': 'rgb(var(--c-border-main))',
+            '--tw-prose-td-borders': 'rgb(var(--c-border-light))',
             a: {
-              color: colors.primary.main,
               '&:hover': {
-                color: colors.primary.light
+                color: 'rgb(var(--c-primary-light))'
               }
-            },
-            h1: { color: colors.text.primary },
-            h2: { color: colors.text.primary },
-            h3: { color: colors.text.primary },
-            h4: { color: colors.text.primary }
+            }
           }
         }
       }

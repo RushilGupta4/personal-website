@@ -45,11 +45,11 @@
     position: relative;
 
     &::after {
-      background-color: #38bdf8;
+      background-color: rgb(var(--c-accent-400));
     }
 
     &:hover {
-      color: #38bdf8;
+      color: rgb(var(--c-accent-400));
     }
   }
 
@@ -78,7 +78,7 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-blue-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-accent-400;
   }
 }
 
@@ -126,5 +126,211 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Theming
+ * The colour variables themselves live in src/lib/theme.ts and are emitted
+ * into <head> by the root layout. Everything below is theme-specific styling
+ * that has no token of its own.
+ * ------------------------------------------------------------------------- */
+
+/* The scrolled header is a translucent tint, which reads clearly on black but
+ * disappears against a near-white page. Light gets a hairline instead. */
+:root[data-theme='light'] .site-header--scrolled {
+  border-bottom: 1px solid rgb(var(--c-border-light) / 0.7);
+}
+
+/* ---------------------------------------------------------------------------
+ * Theme toggle
+ * ------------------------------------------------------------------------- */
+
+/* The two icons sit on opposite ends of a wheel whose centre is below the
+ * button, so only the top of its arc shows through the window. Turning the
+ * wheel half a revolution sets one icon behind the horizon on the right while
+ * the other rises on the left. The icons counter-rotate by the same amount, so
+ * they travel the arc without spinning.
+ *
+ * `--orbit-radius` is the wheel's radius and `--icon-size` the window; the
+ * offsets below are derived from them. Driven by the attribute, so the right
+ * icon is in place before hydration. */
+.theme-orbit-window {
+  --icon-size: 20px;
+  --window-size: 34px;
+  --orbit-radius: 17px;
+
+  position: relative;
+  width: var(--window-size);
+  height: var(--window-size);
+  border-radius: 50%;
+  /* The horizon: an icon is only ever visible inside this circle. */
+  overflow: hidden;
+}
+
+.theme-orbit {
+  position: absolute;
+  left: calc(var(--window-size) / 2);
+  top: calc(var(--window-size) / 2 + var(--orbit-radius));
+  width: 0;
+  height: 0;
+  transition: transform 360ms cubic-bezier(0.2, 0.5, 0.4, 1);
+}
+
+.theme-icon {
+  position: absolute;
+  left: calc(var(--icon-size) / -2);
+  transition: transform 360ms cubic-bezier(0.2, 0.5, 0.4, 1);
+}
+
+/* Top of the wheel, centred in the window. */
+.theme-icon--moon {
+  top: calc((var(--icon-size) / 2 + var(--orbit-radius)) * -1);
+}
+
+/* Bottom of the wheel, a full diameter below the window. */
+.theme-icon--sun {
+  top: calc(var(--orbit-radius) - var(--icon-size) / 2);
+}
+
+:root[data-theme='light'] .theme-orbit {
+  transform: rotate(180deg);
+}
+
+:root[data-theme='light'] .theme-icon {
+  transform: rotate(-180deg);
+}
+
+/* Snapshot animations own the motion during a view transition. Capture the
+ * final DOM state instead of capturing an in-progress CSS rotation. */
+:root[data-theme-revealing] .theme-orbit,
+:root[data-theme-revealing] .theme-icon {
+  transition: none;
+}
+
+/* Circle used only where the View Transitions API is unavailable. Its colour,
+ * position and size are set from JS; it is grown with a transform. */
+.theme-reveal {
+  position: fixed;
+  z-index: 9999;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ---------------------------------------------------------------------------
+ * Circular theme reveal (View Transitions API)
+ * The incoming theme's snapshot is clipped to a circle that grows from the
+ * toggle, so switching either way wipes in the colour you are moving to.
+ *
+ * The animation is declared here rather than started from JS: a scripted
+ * animation cannot begin until `transition.ready` resolves, which leaves one
+ * frame where the new snapshot paints unclipped before snapping back to zero.
+ * Declaring it in CSS means the browser runs it from the transition's first
+ * frame. The geometry comes from custom properties that the toggle sets on
+ * <html> before starting the transition.
+ * ------------------------------------------------------------------------- */
+
+::view-transition-old(root) {
+  /* The outgoing snapshot just sits underneath; no crossfade. */
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal var(--reveal-duration, 300ms) var(--reveal-easing, cubic-bezier(0.333333, 0.3, 0.666667, 0.633333)) both;
+  mix-blend-mode: normal;
+  clip-path: circle(0 at var(--reveal-x, 50%) var(--reveal-y, 50%));
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--reveal-x, 50%) var(--reveal-y, 50%));
+  }
+  to {
+    clip-path: circle(var(--reveal-r, 150vmax) at var(--reveal-x, 50%) var(--reveal-y, 50%));
+  }
+}
+
+/* Both snapshots are the size of the viewport in both themes, so the group has
+ * nothing to tween. Left alone, the browser animates its width, height,
+ * transform and backdrop-filter every frame, which is what made the reveal
+ * drop frames. */
+::view-transition-group(root),
+::view-transition-group(theme-toggle) {
+  animation: none;
+}
+
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+
+::view-transition {
+  /* Keep the page clickable while the circle expands. */
+  pointer-events: none;
+}
+
+/* The toggle rides above the expanding circle and spins as it passes. The live
+ * DOM is hidden during a transition, so the rotation has to be animated on the
+ * snapshots themselves. */
+::view-transition-group(theme-toggle) {
+  z-index: 10;
+  /* The same horizon as the live window, so a travelling icon is never drawn
+   * outside the circle. The window is wider than the icon, which leaves the
+   * icon most of its arc still inside the clip. */
+  clip-path: circle(50%);
+}
+
+::view-transition-old(theme-toggle),
+::view-transition-new(theme-toggle) {
+  /* The default crossfade blend brightens where the two icons overlap. */
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(theme-toggle) {
+  animation: 360ms cubic-bezier(0.2, 0.5, 0.4, 1) both theme-icon-set;
+}
+
+::view-transition-new(theme-toggle) {
+  animation: 360ms cubic-bezier(0.2, 0.5, 0.4, 1) both theme-icon-rise;
+}
+
+/* Rotate around a point 17px below the icon, then counter-rotate the glyph.
+ * Matching transform lists interpolate a true arc with one easing curve;
+ * intermediate translation keyframes introduce a visible kink and restart
+ * the easing halfway through the motion. */
+@keyframes theme-icon-set {
+  from {
+    transform: translateY(17px) rotate(0deg) translateY(-17px) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(17px) rotate(90deg) translateY(-17px) rotate(-90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes theme-icon-rise {
+  from {
+    transform: translateY(17px) rotate(-90deg) translateY(-17px) rotate(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(17px) rotate(0deg) translateY(-17px) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  .theme-orbit,
+  .theme-icon {
+    transition: none;
   }
 }

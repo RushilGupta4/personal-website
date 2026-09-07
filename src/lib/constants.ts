@@ -9,6 +9,7 @@ export const baseUrl = 'https://rushilgupta.in';
 
 // Social media links
 export const socialLinks = {
+  scholar: 'https://scholar.google.com/citations?user=yn5rnr4AAAAJ&hl=en',
   linkedin: 'https://www.linkedin.com/in/rushilgupta4',
   github: 'https://github.com/RushilGupta4',
   email: 'mailto:rushilgupta4@gmail.com'
@@ -25,5 +26,6 @@ export interface NavRoute {
 export const NAVIGATION_ROUTES: NavRoute[] = [
   { name: 'Home', path: '/', exact: true },
   { name: 'Blogs', path: '/blogs' },
-  { name: 'Projects', path: '/projects' }
+  { name: 'Publications', path: '/publications' },
+  { name: 'Teaching', path: '/teaching' }
 ];

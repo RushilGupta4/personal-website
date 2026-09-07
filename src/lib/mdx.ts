@@ -18,7 +18,14 @@ export const getPostBySlug = async (slug: string, directory: string): Promise<{ 
 
   const { frontmatter, content } = await compileMDX({
     source: fileContent,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      // next-mdx-remote v5+ strips JSX expressions by default. Our MDX is authored
+      // in-repo (not user submitted) and relies on `<BlogInfo frontmatter={frontmatter} />`,
+      // so expressions stay enabled while dangerous calls remain blocked.
+      blockJS: false,
+      blockDangerousJS: true
+    },
     components: { BlogInfo }
   });
 

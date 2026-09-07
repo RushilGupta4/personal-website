@@ -57,3 +57,30 @@ export const createSlug = (text: string): string => {
     .replace(/-+/g, '-')
     .trim();
 };
+
+const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/**
+ * Formats a blog frontmatter date as "05 Dec 2023", matching the blog post header.
+ *
+ * @param date - Date string as written in frontmatter, e.g. "December 5, 2023"
+ * @returns Formatted date, or the input unchanged if it cannot be parsed
+ */
+export const formatShortDate = (date: string): string => {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return `${String(parsed.getDate()).padStart(2, '0')} ${MONTHS_SHORT[parsed.getMonth()]} ${parsed.getFullYear()}`;
+};
+
+/**
+ * Machine-readable YYYY-MM-DD for a <time> element. Uses local date parts so a
+ * date-only frontmatter value cannot drift into the previous day via UTC.
+ *
+ * @param date - Date string as written in frontmatter
+ * @returns ISO calendar date, or an empty string if it cannot be parsed
+ */
+export const toISODate = (date: string): string => {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return '';
+  return `${parsed.getFullYear()}-${String(parsed.getMonth() + 1).padStart(2, '0')}-${String(parsed.getDate()).padStart(2, '0')}`;
+};

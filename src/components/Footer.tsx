@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { colors } from '@/lib/theme';
 
-const Footer = (): JSX.Element => {
+const Footer = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
