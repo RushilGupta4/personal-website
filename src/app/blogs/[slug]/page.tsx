@@ -2,7 +2,7 @@ import { createPageMetadata } from '@/lib/metadata';
 import { toISODate } from '@/lib/utils';
 import { getAllPostsMeta, getBlogPostOrNotFound } from '@/lib/mdx';
 import SchemaData from '@/components/SchemaData';
-import { baseUrl, personId } from '@/lib/constants';
+import { absoluteUrl, personId, siteId, siteUrl } from '@/lib/constants';
 
 export async function generateStaticParams() {
   const slugs = await getAllPostsMeta('blogs');
@@ -31,40 +31,28 @@ const Page = async ({ params }: PageProps) => {
   const { slug } = await params;
   const { meta, content } = await getBlogPostOrNotFound(slug);
 
-  const jsonLd = {
+  const postUrl = absoluteUrl(`/blogs/${slug}`);
+  const postSchema = {
     '@type': 'BlogPosting',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${baseUrl}/blogs/${slug}`
-    },
-    author: {
-      '@type': 'Person',
-      '@id': personId,
-      name: 'Rushil Gupta',
-      url: baseUrl
-    },
-    publisher: {
-      '@type': 'Person',
-      '@id': personId,
-      name: 'Rushil Gupta',
-      url: baseUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/img/favicon.png`
-      }
-    },
+    '@id': `${postUrl}#article`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
+    isPartOf: { '@id': `${absoluteUrl('/blogs')}#blog` },
+    author: { '@id': personId, name: 'Rushil Gupta', url: siteUrl },
+    publisher: { '@id': personId, name: 'Rushil Gupta', url: siteUrl },
     headline: meta.title,
     description: meta.description,
     datePublished: toISODate(meta.publishDate),
     dateModified: toISODate(meta.updatedDate || meta.publishDate),
-    image: `${baseUrl}/blogs/${slug}/opengraph-image`,
-    url: `/blogs/${slug}`,
+    inLanguage: 'en',
+    articleSection: meta.tags,
+    ...(meta.image ? { image: absoluteUrl(meta.image) } : {}),
+    url: postUrl,
     keywords: meta.keywords
   };
 
   return (
     <section className="pt-4 md:pt-8 mx-auto">
-      <SchemaData data={jsonLd} />
+      <SchemaData data={{ '@graph': [{ '@type': 'WebPage', '@id': postUrl, isPartOf: { '@id': siteId } }, postSchema] }} />
       <article className="mx-auto prose prose-base md:prose-md lg:prose-lg 2xl:prose-2xl">{content}</article>
     </section>
   );
