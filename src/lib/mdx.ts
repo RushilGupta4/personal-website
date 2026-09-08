@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import BlogInfo from '@/components/mdx/BlogInfo';
+import MdxImage from '@/components/mdx/MdxImage';
 
 const rootDirectory = `${process.cwd()}/content`;
 
@@ -29,7 +30,7 @@ export const getPostBySlug = async (slug: string, directory: string): Promise<{ 
       blockJS: false,
       blockDangerousJS: true
     },
-    components: { BlogInfo }
+    components: { BlogInfo, img: MdxImage }
   });
 
   if (frontmatter.hasOwnProperty('published')) {
