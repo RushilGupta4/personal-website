@@ -6,7 +6,7 @@
  *   - `lightColors` — the same design on a light ground
  *
  * Both keep the brand colour: blue accents, the red on the email link, and the
- * pastel blog tags. Only the grounds, type and borders invert; the accents are
+ * muted blog tags. Only the grounds, type and borders invert; the accents are
  * re-tuned for contrast rather than drained.
  *
  * `colors` aliases `darkColors` for consumers that need literal hex at render
@@ -31,9 +31,9 @@ export interface Palette {
 
 export const darkColors: Palette = {
   primary: {
-    main: '#0a66c2',
-    light: '#1a76d2',
-    dark: '#0956a2'
+    main: '#1473d2',
+    light: '#2682e0',
+    dark: '#1062b5'
   },
 
   background: {
@@ -74,26 +74,26 @@ export const darkColors: Palette = {
     email: '#d53833'
   },
 
-  // The search input is deliberately light-on-dark in this palette
+  // A quiet surface keeps the search field secondary to the content
   input: {
-    bg: '#f9fafb',
-    text: '#111827',
-    border: '#9ca3af'
+    bg: '#222226',
+    text: '#f7f8fb',
+    border: '#45454d'
   }
 };
 
 export const lightColors: Palette = {
   // Same blue, with the hover shade going darker instead of lighter
   primary: {
-    main: '#0a66c2',
-    light: '#1a76d2',
-    dark: '#07458a'
+    main: '#1473d2',
+    light: '#2682e0',
+    dark: '#0c58a6'
   },
 
   background: {
     dark: '#ffffff',
-    light: '#f4f4f5',
-    paper: '#ebebed'
+    light: '#fafafa',
+    paper: '#f2f2f3'
   },
 
   text: {
@@ -132,7 +132,7 @@ export const lightColors: Palette = {
   input: {
     bg: '#ffffff',
     text: '#0a0a0a',
-    border: '#a1a1aa'
+    border: '#d4d4d8'
   }
 };
 

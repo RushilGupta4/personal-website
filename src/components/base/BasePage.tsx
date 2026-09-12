@@ -30,8 +30,8 @@ const BasePage = ({ title, description, children, jsonLd }: BasePageProps): Reac
         <div className="mb-8 md:mb-12 animate-fade-in">
           {/* Header */}
           <div className="mb-6 md:mb-10">
-            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-primary-light">{title}</span>
+            <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-text-primary">
+              {title}
             </h1>
 
             {description && (

@@ -44,14 +44,14 @@ export default async function Home(): Promise<React.JSX.Element> {
         {/* Profile Image */}
         <div className="animate-fade-in w-full md:w-[51.975%] md:min-w-0 order-1 md:order-2">
           <div className="mx-auto w-full max-w-[560px] md:max-w-[529.2px] lg:max-w-[642.6px]">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-tr from-primary-main/10 to-accent-400/10 rounded-lg blur-lg -z-10"></div>
-              <div className="overflow-hidden rounded-lg shadow-lg">
+            <div className="relative isolate">
+              <div aria-hidden="true" className="pointer-events-none absolute -inset-1 -z-10 rounded-lg bg-gradient-to-tr from-primary-main/5 to-accent-400/5 blur-lg" />
+              <div className="overflow-hidden rounded-lg shadow-sm">
                 <Image
                   src={landingPic}
                   alt="Rushil Gupta on the Embarcadero in San Francisco"
                   sizes="(min-width: 1024px) 642.6px, (min-width: 768px) 51.975vw, 92vw"
-                  className="object-cover w-full aspect-[4/3] transition-all duration-500 hover:scale-[1.025]"
+                  className="object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.0125] motion-reduce:transform-none motion-reduce:transition-none"
                   placeholder="blur"
                   priority
                 />
@@ -104,7 +104,7 @@ export default async function Home(): Promise<React.JSX.Element> {
         <div className="animate-slide-up w-full md:w-[48.025%] md:min-w-0 order-2 md:order-1 text-center md:text-left px-4 sm:px-0">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Hi, I&apos;m <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-accent-400">Rushil</span>
+              Hi, I&apos;m <span className="text-primary-main">Rushil</span>
             </h1>
 
             <div className="prose prose-lg text-[1.0125rem] md:prose-xl md:text-[1.125rem] max-w-none">{content}</div>
@@ -112,12 +112,12 @@ export default async function Home(): Promise<React.JSX.Element> {
             <div className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
               <Link
                 href="/publications"
-                className="btn btn-primary flex items-center gap-2 group shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
+                className="btn btn-primary flex items-center gap-2 group"
               >
                 View My Research
                 <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <Link href="/blogs" className="btn btn-outline hover:bg-background-paper/30 transform hover:-translate-y-0.5 transition-all">
+              <Link href="/blogs" className="btn btn-outline">
                 Read My Blogs
               </Link>
             </div>

@@ -10,21 +10,20 @@ const BlogPreview = ({ data }: { data: any }): React.ReactNode => {
           className={`flex flex-col lg:flex-row items-left lg:items-center justify-between link-underline link-underline-blue pb-2 mb-0 lg:hover:mb-1 text-xl md:text-2xl lg:text-2xl 4xl:text-4xl hover:scale-[1.01] transition-all !duration-300`}
         >
           <h2 className={`h-max duration-200 text-text-heading font-bold leading-tight`}>{data.title}</h2>
-
-          <div className={`flex gap-2 items-center my-[2px] lg:my-0`}>
-            {data.tags.map((tag: string) => (
-              <BlogTag key={tag} tag={tag} />
-            ))}
-          </div>
         </div>
       </Link>
 
-      {data.publishDate && (
-        <p className={`text-sm md:text-base text-text-secondary font-light mb-1`}>
-          <time dateTime={toISODate(data.publishDate)}>{formatShortDate(data.publishDate)}</time>
-          {data.readTime && ` • ${data.readTime}`}
-        </p>
-      )}
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-2">
+        {data.publishDate && (
+          <p className="text-sm text-text-secondary">
+            <time dateTime={toISODate(data.publishDate)}>{formatShortDate(data.publishDate)}</time>
+            {data.readTime && ` • ${data.readTime}`}
+          </p>
+        )}
+        {data.tags.map((tag: string) => (
+          <BlogTag key={tag} tag={tag} />
+        ))}
+      </div>
 
       <p className={`line-clamp-4 md:line-clamp-3 lg:line-clamp-2 text-text-body text-base md:text-lg 3xl:text-xl font-[325]`}>{data.description}</p>
     </div>

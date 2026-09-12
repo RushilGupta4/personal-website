@@ -15,14 +15,14 @@ const PublicationEntry = ({ data }: { data: Publication }) => {
   const date = `${MONTHS[data.month - 1]} ${data.year}`;
 
   return (
-    <article className="py-5 md:py-6 border-b border-border-light/30 last:border-b-0">
-      <h2 className="text-xl md:text-2xl 3xl:text-3xl font-bold leading-snug text-text-heading">
+    <article className="py-5 md:py-6 border-b border-border-light/60 last:border-b-0">
+      <h2 className="text-xl md:text-2xl font-bold leading-snug text-text-heading">
         <a href={primary.url} target="_blank" rel="noopener noreferrer" className="link-underline link-underline-blue transition-colors duration-200">
           {data.title}
         </a>
       </h2>
 
-      <p className="mt-2 text-sm md:text-base text-text-secondary">
+      <p className="mt-2 text-sm leading-relaxed text-text-secondary">
         {data.authors.map((author, index) => (
           <span key={author}>
             <span className={cn(author === AUTHOR_NAME && 'font-semibold text-text-primary')}>{author}</span>
@@ -31,7 +31,7 @@ const PublicationEntry = ({ data }: { data: Publication }) => {
         ))}
       </p>
 
-      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm md:text-base">
+      <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
         <span className={cn('px-2.5 py-0.5 rounded-md border font-medium', VENUE_STYLES[data.venue.type])}>{data.venue.name}</span>
         <span className="text-text-secondary">{date}</span>
         {secondary.length > 0 && (

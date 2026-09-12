@@ -11,7 +11,8 @@ const SearchBar = ({ searchQuery, onChange, name }: SearchBarProps): React.JSX.E
     <div className="mb-8 md:mb-10 mx-auto">
       <input
         type="search"
-        className="block mx-auto max-w-none md:max-w-[55vw] w-full p-4 md:py-3 text-sm md:text-base text-input-text border border-input-border rounded-md bg-input-bg focus:ring-accent-500 focus:border-accent-500"
+        aria-label={`Search ${name.toLowerCase()}`}
+        className="block w-full px-4 py-3 text-sm md:text-base text-input-text placeholder:text-text-secondary/70 border border-input-border rounded-md bg-input-bg transition-colors focus:outline-none focus:ring-2 focus:ring-accent-500/50 focus:border-accent-500"
         placeholder={`Search ${name.toLowerCase()}...`}
         value={searchQuery}
         onChange={e => onChange(e.target.value)}
