@@ -5,9 +5,9 @@ const TeachingEntry = ({ data }: { data: Course }) => {
   const hasSlides = Boolean(data.slides?.length);
 
   return (
-    <article className="py-5 md:py-6 border-b border-border-light/30 last:border-b-0">
+    <article className="py-5 md:py-6 border-b border-border-light/60 last:border-b-0">
       <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-4">
-        <h2 className="text-xl md:text-2xl 3xl:text-3xl font-bold leading-snug text-text-heading">
+        <h2 className="text-xl md:text-2xl font-bold leading-snug text-text-heading">
           {data.courseLink ? (
             <a
               href={data.courseLink}
@@ -21,21 +21,20 @@ const TeachingEntry = ({ data }: { data: Course }) => {
             data.name
           )}
         </h2>
-        <span className="shrink-0 text-sm md:text-base text-text-secondary whitespace-nowrap">
+        <span className="shrink-0 text-sm text-text-secondary whitespace-nowrap">
           {data.termSeason} {data.termYear}
         </span>
       </div>
 
-      <p className="mt-2 text-sm md:text-base text-text-secondary">
+      <p className="mt-2 text-sm leading-relaxed text-text-secondary">
         <span className="font-medium text-text-primary">{data.role}</span>
         {' · '}
-        {data.code}
-        {' · '}
         {data.institution}
+        <span className="block mt-1 text-text-secondary">{data.code}</span>
       </p>
 
       {data.instructors && data.instructors.length > 0 && (
-        <p className="mt-1 text-sm md:text-base text-text-secondary">
+        <p className="mt-1 text-sm leading-relaxed text-text-secondary">
           Taught by {new Intl.ListFormat('en', { style: 'long', type: 'conjunction' }).format(data.instructors)}
         </p>
       )}

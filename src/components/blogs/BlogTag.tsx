@@ -7,9 +7,9 @@ const robotoMono = Roboto_Mono({
 
 const BlogTag = ({ tag }: { tag: string }) => {
   return (
-    <p key={tag} className={`${robotoMono.className} text-[13px] md:text-[15px] tag-${tag} px-[10px] mt-[2px] rounded-[3px] sm:rounded-[3.5px]`}>
+    <span key={tag} className={`${robotoMono.className} inline-flex items-center !my-0 text-xs leading-5 text-text-secondary bg-neutral-main/10 border border-neutral-main/15 px-2 py-0.5 rounded`}>
       {tag}
-    </p>
+    </span>
   );
 };
 

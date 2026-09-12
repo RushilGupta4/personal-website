@@ -77,9 +77,9 @@ export default function RootLayout({ children }: RootLayoutProps): React.JSX.Ele
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className={`${roboto.className} h-full text-text-primary mx-auto overflow-x-hidden flex flex-col justify-between`}>
-        <div className="max-w-[110ch] 3xl:max-w-[130ch] 4xl:max-w-[180ch] mx-auto">
+        <div className="w-full max-w-[960px] mx-auto">
           <NavBar />
-          <div className="mx-8">{children}</div>
+          <div className="px-4 sm:px-8">{children}</div>
         </div>
         <Footer />
         <Analytics />

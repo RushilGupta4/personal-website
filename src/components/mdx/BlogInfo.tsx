@@ -27,15 +27,16 @@ const BlogInfo = async ({ frontmatter }: { frontmatter: any }) => {
           </div>
           <div className={`my-auto w-full pl-2 sm:pl-3 md:pl-4`}>
             <p className={`${pClassName} text-[1em] text-text-body font-medium`}>{frontmatter.author}</p>
-            <p className={`${pClassName} text-[.9em] text-text-body font-light`}><time dateTime={toISODate(frontmatter.publishDate)}>{blogDateString}</time>{` • ${frontmatter.readTime}`}</p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-1">
+              <p className={`${pClassName} text-sm text-text-secondary`}>
+                <time dateTime={toISODate(frontmatter.publishDate)}>{blogDateString}</time>
+                {` • ${frontmatter.readTime}`}
+              </p>
+              {frontmatter.tags.map((tag: string) => (
+                <BlogTag key={tag} tag={tag} />
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Tag Info */}
-        <div className="flex gap-2 mt-2 md:mt-0">
-          {frontmatter.tags.map((tag: string) => (
-            <BlogTag key={tag} tag={tag} />
-          ))}
         </div>
       </div>
     </div>

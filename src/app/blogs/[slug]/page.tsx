@@ -53,7 +53,7 @@ const Page = async ({ params }: PageProps) => {
   return (
     <section className="pt-4 md:pt-8 mx-auto">
       <SchemaData data={{ '@graph': [{ '@type': 'WebPage', '@id': postUrl, isPartOf: { '@id': siteId } }, postSchema] }} />
-      <article className="mx-auto prose prose-base md:prose-md lg:prose-lg 2xl:prose-2xl">{content}</article>
+      <article className="mx-auto prose prose-base md:prose-md lg:prose-lg 2xl:prose-2xl max-w-none">{content}</article>
     </section>
   );
 };

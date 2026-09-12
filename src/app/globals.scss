@@ -60,7 +60,7 @@
 
   /* Button styles */
   .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-200 font-medium;
+    @apply px-4 py-2 rounded-md transition-colors duration-200 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background-light;
   }
 
   .btn-primary {
@@ -77,9 +77,6 @@
     letter-spacing: -0.025em;
   }
 
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-main to-accent-400;
-  }
 }
 
 @layer utilities {
