@@ -36,6 +36,16 @@ export const AUTHOR_NAME = 'Rushil Gupta';
 
 const publications: Publication[] = [
   {
+    title: 'A Splitting Method for SDE Terminal-Law Estimation',
+    authors: ['Rushil Gupta', 'Sandeep Juneja'],
+    month: 9,
+    year: 2026,
+    description:
+      'A path-splitting method for estimating terminal distributions of stochastic differential equations under a fixed simulation budget. We characterise asymptotic errors and develop a splitting strategy that reduces mean Kolmogorov–Smirnov error by 10–25% in many settings compared with independent sampling.',
+    venue: { name: 'arXiv', type: 'preprint' },
+    links: [{ label: 'arXiv', url: 'https://arxiv.org/abs/2609.12513' }]
+  },
+  {
     title: 'AdaWeather: Adaptively Mixing Probabilistic Weather Forecasts with Logarithmic Regret',
     authors: [
       'Saptarishi Dhanuka',
