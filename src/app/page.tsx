@@ -29,8 +29,12 @@ export default async function Home(): Promise<React.JSX.Element> {
     name: 'Rushil Gupta',
     url: siteUrl,
     description: siteDescription,
-    jobTitle: 'Computer Science Student',
-    affiliation: { '@type': 'CollegeOrUniversity', name: 'Ashoka University' },
+    affiliation: {
+      '@type': 'Organization',
+      name: 'Safexpress Centre for Data, Learning and Decision Sciences',
+      url: 'https://scdlds.ashoka.edu.in/',
+      parentOrganization: { '@type': 'CollegeOrUniversity', name: 'Ashoka University' }
+    },
     image: absoluteUrl('/img/profile_pic.webp'),
     sameAs: [socialLinks.scholar, socialLinks.github, socialLinks.linkedin]
   };
@@ -40,9 +44,9 @@ export default async function Home(): Promise<React.JSX.Element> {
       <SchemaData data={{ '@graph': [websiteSchema, personSchema] }} />
 
       {/* Hero Section */}
-      <section className="min-h-[80vh] flex flex-col md:flex-row items-center justify-center gap-10 md:gap-12 py-10 md:py-20">
-        {/* Profile Image */}
-        <div className="animate-fade-in w-full md:w-[51.975%] md:min-w-0 order-1 md:order-2">
+      <section className="flex flex-col md:flex-row items-start md:items-center justify-center gap-10 md:gap-6 md:-mx-4 py-8 md:py-12">
+        {/* Preserve the original desktop photo width within the wider content area. */}
+        <div className="animate-fade-in w-full md:w-[calc(51.975%_-_41.58px)] md:shrink-0 md:min-w-0 order-1">
           <div className="mx-auto w-full max-w-[560px] md:max-w-[529.2px] lg:max-w-[642.6px]">
             <div className="relative isolate">
               <div aria-hidden="true" className="pointer-events-none absolute -inset-1 -z-10 rounded-lg bg-gradient-to-tr from-primary-main/5 to-accent-400/5 blur-lg" />
@@ -101,15 +105,15 @@ export default async function Home(): Promise<React.JSX.Element> {
         </div>
 
         {/* About Me Content */}
-        <div className="animate-slide-up w-full md:w-[48.025%] md:min-w-0 order-2 md:order-1 text-center md:text-left px-4 sm:px-0">
+        <div className="animate-slide-up w-full md:w-auto md:flex-1 md:min-w-0 order-2 text-left px-4 sm:px-0">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Hi, I&apos;m <span className="text-primary-main">Rushil</span>
+            <h1 className="text-4xl md:text-[2.5rem] font-bold leading-tight">
+              <span className="text-primary-main">Rushil Gupta</span>
             </h1>
 
-            <div className="prose prose-lg text-[1.0125rem] md:prose-xl md:text-[1.125rem] max-w-none">{content}</div>
+            <div className="prose prose-lg text-base md:text-[1.0625rem] leading-relaxed max-w-none prose-p:my-0 prose-p:mb-5 prose-a:font-normal prose-a:text-text-primary prose-a:underline prose-a:decoration-border-main prose-a:underline-offset-4 hover:prose-a:decoration-current">{content}</div>
 
-            <div className="pt-4 flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="pt-4 flex flex-wrap gap-4 justify-start">
               <Link
                 href="/publications"
                 className="btn btn-primary flex items-center gap-2 group"
