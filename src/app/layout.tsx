@@ -73,6 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps): React.JSX.Ele
   return (
     <html lang="en" data-theme={DEFAULT_THEME} suppressHydrationWarning className="h-full bg-background-dark sm:bg-background-light">
       <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
         <style dangerouslySetInnerHTML={{ __html: themeVarsCss }} />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
