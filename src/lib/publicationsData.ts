@@ -26,6 +26,8 @@ export interface Publication {
   year: number;
   /** One or two lines. */
   description: string;
+  /** Concise description for the llms.txt directory, following the venue/date. */
+  directorySummary?: string;
   venue: Venue;
   /** First entry is the primary link the title points at. */
   links: PublicationLink[];
@@ -37,6 +39,7 @@ export const AUTHOR_NAME = 'Rushil Gupta';
 const publications: Publication[] = [
   {
     title: 'A Splitting Method for SDE Terminal-Law Estimation',
+    directorySummary: 'with Sandeep Juneja on path splitting for estimating terminal distributions of stochastic differential equations.',
     authors: ['Rushil Gupta', 'Sandeep Juneja'],
     month: 9,
     year: 2026,
@@ -47,6 +50,7 @@ const publications: Publication[] = [
   },
   {
     title: 'AdaWeather: Adaptively Mixing Probabilistic Weather Forecasts with Logarithmic Regret',
+    directorySummary: 'on adaptive combinations of probabilistic weather forecasts.',
     authors: [
       'Saptarishi Dhanuka',
       'Sarvesh Iyer',
@@ -66,6 +70,7 @@ const publications: Publication[] = [
   },
   {
     title: 'Fundamental limits for weighted empirical approximations of tilted distributions',
+    directorySummary: 'on the accuracy of self-normalized importance sampling.',
     authors: [
       'Sarvesh Ravichandran Iyer',
       'Himadri Mandal',
