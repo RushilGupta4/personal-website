@@ -10,8 +10,8 @@ export const baseUrl = 'https://rushilgupta.in';
 export const siteUrl = new URL(baseUrl).href;
 export const siteId = `${siteUrl}#website`;
 export const personId = `${siteUrl}#person`;
-export const siteTitle = 'Rushil Gupta | CS @ Ashoka University';
-export const siteDescription = 'Rushil Gupta is a computer science student at Ashoka University interested in machine learning, optimisation, and applied probability.';
+export const siteTitle = 'Rushil Gupta | SCDLDS, Ashoka University';
+export const siteDescription = 'Rushil Gupta works at SCDLDS, Ashoka University, with research interests in machine learning, optimisation, and applied probability.';
 
 export function absoluteUrl(path = '/'): string {
   return new URL(path, siteUrl).href;
