@@ -55,7 +55,7 @@ export default async function Home(): Promise<React.JSX.Element> {
                   src={landingPic}
                   alt="Rushil Gupta on the Embarcadero in San Francisco"
                   sizes="(min-width: 1024px) 642.6px, (min-width: 768px) 51.975vw, 92vw"
-                  className="object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.0125] motion-reduce:transform-none motion-reduce:transition-none"
+                  className="object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
                   placeholder="blur"
                   priority
                 />
