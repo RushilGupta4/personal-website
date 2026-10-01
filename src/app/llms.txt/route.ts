@@ -11,7 +11,7 @@ export function GET(): Response {
         .format(new Date(Date.UTC(publication.year, publication.month - 1, 1)));
       const venue = publication.venue.type === 'preprint'
         ? `${month} ${publication.year} preprint`
-        : `${publication.venue.name} paper`;
+        : `${publication.venue.name} ${publication.venue.type === 'workshop' ? 'workshop paper' : 'paper'}`;
       const description = publication.directorySummary
         ? `${venue} ${publication.directorySummary}`
         : `${venue}. ${publication.description}`;

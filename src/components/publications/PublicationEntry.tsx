@@ -13,6 +13,7 @@ const VENUE_STYLES: Record<VenueType, string> = {
 const PublicationEntry = ({ data }: { data: Publication }) => {
   const [primary, ...secondary] = data.links;
   const date = `${MONTHS[data.month - 1]} ${data.year}`;
+  const venueClass = cn('px-2.5 py-0.5 rounded-md border font-medium', VENUE_STYLES[data.venue.type]);
 
   return (
     <article className="py-5 md:py-6 border-b border-border-light/60 last:border-b-0">
@@ -32,7 +33,18 @@ const PublicationEntry = ({ data }: { data: Publication }) => {
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-        <span className={cn('px-2.5 py-0.5 rounded-md border font-medium', VENUE_STYLES[data.venue.type])}>{data.venue.name}</span>
+        {data.venue.url ? (
+          <a
+            href={data.venue.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(venueClass, 'hover:brightness-125 transition-[filter] duration-200')}
+          >
+            {data.venue.name}
+          </a>
+        ) : (
+          <span className={venueClass}>{data.venue.name}</span>
+        )}
         <span className="text-text-secondary">{date}</span>
         {secondary.length > 0 && (
           <span className="flex flex-wrap items-center gap-x-3">
