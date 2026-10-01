@@ -6,17 +6,13 @@
 
 export type VenueType = 'conference' | 'journal' | 'workshop' | 'preprint';
 
+/** One version of a paper, e.g. its arXiv preprint or its appearance at a conference. */
 export interface Venue {
   /** Display name, e.g. "AISTATS 2026" or "arXiv". */
   name: string;
   type: VenueType;
-  /** Venue homepage; the tag links here when set. */
-  url?: string;
-}
-
-export interface PublicationLink {
-  label: string;
-  url: string;
+  /** This version of the paper, e.g. its OpenReview, PMLR or arXiv page. The tag links here. */
+  paper: string;
 }
 
 export interface Publication {
@@ -30,9 +26,8 @@ export interface Publication {
   description: string;
   /** Concise description for the llms.txt directory, following the venue/date. */
   directorySummary?: string;
-  venue: Venue;
-  /** First entry is the primary link the title points at. */
-  links: PublicationLink[];
+  /** One per version of the paper, shown in this order. */
+  venues: Venue[];
 }
 
 /** Author name to highlight in the author lists. */
@@ -47,8 +42,10 @@ const publications: Publication[] = [
     year: 2026,
     description:
       'A path-splitting method for estimating terminal distributions of stochastic differential equations under a fixed simulation budget. We characterise asymptotic errors and develop a splitting strategy that reduces mean Kolmogorov–Smirnov error by 10–25% in many settings compared with independent sampling.',
-    venue: { name: 'MLxOR @ NeurIPS 2026', type: 'workshop', url: 'https://mlxor-2026.github.io/' },
-    links: [{ label: 'arXiv', url: 'https://arxiv.org/abs/2609.12513' }]
+    venues: [
+      { name: 'MLxOR @ NeurIPS 2026', type: 'workshop', paper: 'https://openreview.net/forum?id=QLkuIr3rQE' },
+      { name: 'arXiv', type: 'preprint', paper: 'https://arxiv.org/abs/2609.12513' }
+    ]
   },
   {
     title: 'AdaWeather: Adaptively Mixing Probabilistic Weather Forecasts with Logarithmic Regret',
@@ -67,8 +64,7 @@ const publications: Publication[] = [
     year: 2026,
     description:
       'An adaptive framework that mixes many probabilistic weather forecasts using both machine learning and a mixture of experts. We prove logarithmic regret against the best static mixture of experts in hindsight, and show empirical gains on temperature forecasting.',
-    venue: { name: 'arXiv', type: 'preprint' },
-    links: [{ label: 'arXiv', url: 'https://arxiv.org/abs/2606.02663' }]
+    venues: [{ name: 'arXiv', type: 'preprint', paper: 'https://arxiv.org/abs/2606.02663' }]
   },
   {
     title: 'Fundamental limits for weighted empirical approximations of tilted distributions',
@@ -87,12 +83,15 @@ const publications: Publication[] = [
     year: 2025,
     description:
       'A sharp characterisation of how accurately a self-normalized importance sampler can approximate a tilted distribution from samples of the base distribution alone. Bounded random vectors need polynomially many samples in the tilt amount; unbounded ones need super-polynomially many.',
-    venue: { name: 'AISTATS 2026', type: 'conference', url: 'https://virtual.aistats.org/Conferences/2026' },
-    links: [
-      { label: 'OpenReview', url: 'https://openreview.net/forum?id=gmmtcjRs0O' },
-      { label: 'arXiv', url: 'https://arxiv.org/abs/2512.23979' }
+    venues: [
+      { name: 'AISTATS 2026', type: 'conference', paper: 'https://openreview.net/forum?id=gmmtcjRs0O' },
+      { name: 'arXiv', type: 'preprint', paper: 'https://arxiv.org/abs/2512.23979' }
     ]
   }
 ];
+
+/** The link the title points at: the arXiv version (ideally the latest), else the first version. */
+export const primaryUrl = (publication: Publication): string =>
+  (publication.venues.find(venue => venue.name === 'arXiv') ?? publication.venues[0]).paper;
 
 export default publications;
