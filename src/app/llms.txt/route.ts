@@ -1,5 +1,5 @@
 import { absoluteUrl, socialLinks } from '@/lib/constants';
-import publications from '@/lib/publicationsData';
+import publications, { primaryUrl } from '@/lib/publicationsData';
 
 export const dynamic = 'force-static';
 
@@ -9,13 +9,15 @@ export function GET(): Response {
     .map(publication => {
       const month = new Intl.DateTimeFormat('en', { month: 'long', timeZone: 'UTC' })
         .format(new Date(Date.UTC(publication.year, publication.month - 1, 1)));
-      const venue = publication.venue.type === 'preprint'
+      // Describe the paper by its peer-reviewed venue when it has one.
+      const reviewed = publication.venues.find(venue => venue.type !== 'preprint');
+      const venue = !reviewed
         ? `${month} ${publication.year} preprint`
-        : `${publication.venue.name} ${publication.venue.type === 'workshop' ? 'workshop paper' : 'paper'}`;
+        : `${reviewed.name} ${reviewed.type === 'workshop' ? 'workshop paper' : 'paper'}`;
       const description = publication.directorySummary
         ? `${venue} ${publication.directorySummary}`
         : `${venue}. ${publication.description}`;
-      return `- [${publication.title}](${publication.links[0].url}): ${description}`;
+      return `- [${publication.title}](${primaryUrl(publication)}): ${description}`;
     })
     .join('\n');
 

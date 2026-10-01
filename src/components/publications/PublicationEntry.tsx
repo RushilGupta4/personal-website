@@ -1,4 +1,4 @@
-import { AUTHOR_NAME, type Publication, type VenueType } from '@/lib/publicationsData';
+import { AUTHOR_NAME, primaryUrl, type Publication, type Venue, type VenueType } from '@/lib/publicationsData';
 import { cn } from '@/lib/utils';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -10,15 +10,25 @@ const VENUE_STYLES: Record<VenueType, string> = {
   preprint: 'bg-neutral-main/15 text-text-body border-neutral-main/30'
 };
 
+/** A venue pill linking to this version of the paper. */
+const VenueTag = ({ venue }: { venue: Venue }) => (
+  <a
+    href={venue.paper}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={cn('px-2.5 py-0.5 rounded-md border font-medium hover:brightness-125 transition-[filter] duration-200', VENUE_STYLES[venue.type])}
+  >
+    {venue.name}
+  </a>
+);
+
 const PublicationEntry = ({ data }: { data: Publication }) => {
-  const [primary, ...secondary] = data.links;
   const date = `${MONTHS[data.month - 1]} ${data.year}`;
-  const venueClass = cn('px-2.5 py-0.5 rounded-md border font-medium', VENUE_STYLES[data.venue.type]);
 
   return (
     <article className="py-5 md:py-6 border-b border-border-light/60 last:border-b-0">
       <h2 className="text-xl md:text-2xl font-bold leading-snug text-text-heading">
-        <a href={primary.url} target="_blank" rel="noopener noreferrer" className="link-underline link-underline-blue transition-colors duration-200">
+        <a href={primaryUrl(data)} target="_blank" rel="noopener noreferrer" className="link-underline link-underline-blue transition-colors duration-200">
           {data.title}
         </a>
       </h2>
@@ -33,34 +43,10 @@ const PublicationEntry = ({ data }: { data: Publication }) => {
       </p>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-        {data.venue.url ? (
-          <a
-            href={data.venue.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(venueClass, 'hover:brightness-125 transition-[filter] duration-200')}
-          >
-            {data.venue.name}
-          </a>
-        ) : (
-          <span className={venueClass}>{data.venue.name}</span>
-        )}
+        {data.venues.map(venue => (
+          <VenueTag key={venue.name} venue={venue} />
+        ))}
         <span className="text-text-secondary">{date}</span>
-        {secondary.length > 0 && (
-          <span className="flex flex-wrap items-center gap-x-3">
-            {secondary.map(link => (
-              <a
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-secondary hover:text-accent-400 underline underline-offset-4 transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </span>
-        )}
       </div>
 
       <p className="mt-3 text-base md:text-lg 3xl:text-xl text-text-body font-[325] leading-relaxed">{data.description}</p>

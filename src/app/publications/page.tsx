@@ -2,7 +2,7 @@ import { createPageMetadata } from '@/lib/metadata';
 import BasePage from '@/components/base/BasePage';
 import PublicationEntry from '@/components/publications/PublicationEntry';
 import SchemaData from '@/components/SchemaData';
-import publications, { AUTHOR_NAME } from '@/lib/publicationsData';
+import publications, { AUTHOR_NAME, primaryUrl } from '@/lib/publicationsData';
 import { absoluteUrl, personId, siteId } from '@/lib/constants';
 
 export const metadata = createPageMetadata({
@@ -41,7 +41,7 @@ const PublicationsPage = () => {
             author: publication.authors.map(author => ({ '@type': 'Person', name: author, ...(author === AUTHOR_NAME ? { '@id': personId } : {}) })),
             description: publication.description,
             datePublished: `${publication.year}-${String(publication.month).padStart(2, '0')}`,
-            sameAs: publication.links[0].url,
+            sameAs: primaryUrl(publication),
             isPartOf: { '@id': `${pageUrl}#list` }
           }
         }))
@@ -57,7 +57,7 @@ const PublicationsPage = () => {
       <SchemaData data={jsonLd} />
       <div className="mx-auto">
         {sorted.map(publication => (
-          <PublicationEntry key={publication.links[0].url} data={publication} />
+          <PublicationEntry key={primaryUrl(publication)} data={publication} />
         ))}
       </div>
     </BasePage>
