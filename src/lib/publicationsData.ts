@@ -10,6 +10,8 @@ export interface Venue {
   /** Display name, e.g. "AISTATS 2026" or "arXiv". */
   name: string;
   type: VenueType;
+  /** Venue homepage; the tag links here when set. */
+  url?: string;
 }
 
 export interface PublicationLink {
@@ -45,7 +47,7 @@ const publications: Publication[] = [
     year: 2026,
     description:
       'A path-splitting method for estimating terminal distributions of stochastic differential equations under a fixed simulation budget. We characterise asymptotic errors and develop a splitting strategy that reduces mean Kolmogorov–Smirnov error by 10–25% in many settings compared with independent sampling.',
-    venue: { name: 'arXiv', type: 'preprint' },
+    venue: { name: 'MLxOR @ NeurIPS 2026', type: 'workshop', url: 'https://mlxor-2026.github.io/' },
     links: [{ label: 'arXiv', url: 'https://arxiv.org/abs/2609.12513' }]
   },
   {
@@ -85,7 +87,7 @@ const publications: Publication[] = [
     year: 2025,
     description:
       'A sharp characterisation of how accurately a self-normalized importance sampler can approximate a tilted distribution from samples of the base distribution alone. Bounded random vectors need polynomially many samples in the tilt amount; unbounded ones need super-polynomially many.',
-    venue: { name: 'AISTATS 2026', type: 'conference' },
+    venue: { name: 'AISTATS 2026', type: 'conference', url: 'https://virtual.aistats.org/Conferences/2026' },
     links: [
       { label: 'OpenReview', url: 'https://openreview.net/forum?id=gmmtcjRs0O' },
       { label: 'arXiv', url: 'https://arxiv.org/abs/2512.23979' }

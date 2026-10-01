@@ -45,8 +45,9 @@ export default async function Home(): Promise<React.JSX.Element> {
 
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-start md:items-center justify-center gap-10 md:gap-6 md:-mx-4 py-8 md:py-12">
-        {/* Preserve the original desktop photo width within the wider content area. */}
-        <div className="animate-fade-in w-full md:w-[calc(51.975%_-_41.58px)] md:shrink-0 md:min-w-0 order-1">
+        {/* Preserve the original desktop photo width within the wider content area.
+            No entrance animation here: hero content that starts at opacity 0 delays first paint and LCP. */}
+        <div className="w-full md:w-[calc(51.975%_-_41.58px)] md:shrink-0 md:min-w-0 order-1">
           <div className="mx-auto w-full max-w-[560px] md:max-w-[529.2px] lg:max-w-[642.6px]">
             <div className="relative isolate">
               <div aria-hidden="true" className="pointer-events-none absolute -inset-1 -z-10 rounded-lg bg-gradient-to-tr from-primary-main/5 to-accent-400/5 blur-lg" />
@@ -57,7 +58,7 @@ export default async function Home(): Promise<React.JSX.Element> {
                   sizes="(min-width: 1024px) 642.6px, (min-width: 768px) 51.975vw, 92vw"
                   className="object-cover w-full aspect-[4/3] transition-transform duration-500 hover:scale-[1.025] motion-reduce:transform-none motion-reduce:transition-none"
                   placeholder="blur"
-                  priority
+                  preload
                 />
               </div>
             </div>
@@ -91,7 +92,8 @@ export default async function Home(): Promise<React.JSX.Element> {
               >
                 <FaLinkedin size={20} className="text-text-secondary group-hover:text-white" />
               </a>
-              <Link
+              {/* A plain anchor: next/link would prefetch the whole PDF on every homepage visit. */}
+              <a
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -99,13 +101,13 @@ export default async function Home(): Promise<React.JSX.Element> {
                 aria-label="Resume"
               >
                 <MdOutlineContactPage size={20} className="text-text-secondary group-hover:text-white" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
 
         {/* About Me Content */}
-        <div className="animate-slide-up w-full md:w-auto md:flex-1 md:min-w-0 order-2 text-left px-4 sm:px-0">
+        <div className="w-full md:w-auto md:flex-1 md:min-w-0 order-2 text-left px-4 sm:px-0">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-[2.5rem] font-bold leading-tight">
               <span className="text-primary-main">Rushil Gupta</span>
