@@ -42,7 +42,12 @@ const teaching: Course[] = [
     termSeason: 'Monsoon',
     termYear: 2026,
     role: 'Teaching Assistant',
-    instructors: ['Sandeep Juneja']
+    instructors: ['Sandeep Juneja'],
+    slides: [
+      { title: 'Policy Gradients', url: '/teaching/cs-5410/policy-gradients.pdf' },
+      { title: 'MCTS and AlphaGo', url: '/teaching/cs-5410/mcts-and-alphago.pdf' },
+      { title: 'RLHF', url: '/teaching/cs-5410/rlhf.pdf' }
+    ]
   },
   {
     code: 'CS-3410 / MAT-3211',
