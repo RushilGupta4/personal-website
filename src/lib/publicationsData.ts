@@ -28,6 +28,8 @@ export interface Publication {
   directorySummary?: string;
   /** One per version of the paper, shown in this order. */
   venues: Venue[];
+  /** Slides from a talk on the paper, local path or URL. Shown as a "Presentation" button. */
+  presentation?: string;
 }
 
 /** Author name to highlight in the author lists. */
@@ -45,7 +47,8 @@ const publications: Publication[] = [
     venues: [
       { name: 'MLxOR @ NeurIPS 2026', type: 'workshop', paper: 'https://openreview.net/forum?id=QLkuIr3rQE' },
       { name: 'arXiv', type: 'preprint', paper: 'https://arxiv.org/abs/2609.12513' }
-    ]
+    ],
+    presentation: '/research/splitting/scdlds-talk.pdf'
   },
   {
     title: 'AdaWeather: Adaptively Mixing Probabilistic Weather Forecasts with Logarithmic Regret',

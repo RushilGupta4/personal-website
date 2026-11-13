@@ -1,3 +1,4 @@
+import { FiFileText } from 'react-icons/fi';
 import { AUTHOR_NAME, primaryUrl, type Publication, type Venue, type VenueType } from '@/lib/publicationsData';
 import { cn } from '@/lib/utils';
 
@@ -46,6 +47,17 @@ const PublicationEntry = ({ data }: { data: Publication }) => {
         {data.venues.map(venue => (
           <VenueTag key={venue.name} venue={venue} />
         ))}
+        {data.presentation && (
+          <a
+            href={data.presentation}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-border-main font-medium text-text-body hover:text-accent-400 hover:border-accent-400 transition-colors duration-200"
+          >
+            <FiFileText className="shrink-0" size={14} />
+            Presentation
+          </a>
+        )}
         <span className="text-text-secondary">{date}</span>
       </div>
 
